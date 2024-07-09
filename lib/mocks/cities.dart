@@ -1,4 +1,5 @@
 import 'package:quouch_app/mocks/images.dart';
+import 'package:quouch_app/widgets/row_tile_with_image.dart';
 
 const List<RowTileWithImage> cityWidgets = [
   RowTileWithImage(
