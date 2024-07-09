@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:provider/provider.dart';
+import 'package:quouch_app/mocks/users.dart';
 import 'package:quouch_app/screens/favorites_page.dart';
 import 'package:quouch_app/screens/generator_page.dart';
+import 'package:quouch_app/screens/inbox_page.dart';
+import 'package:quouch_app/screens/profile_page.dart';
+import 'package:quouch_app/screens/trip_page.dart';
+import 'package:quouch_app/theme/spacing.dart';
 
 void main() {
   runApp(const QuouchApp());
@@ -21,30 +26,11 @@ class QuouchApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          extensions: [AppSpacing()],
         ),
         home: HomePage(),
       ),
     );
-  }
-}
-
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-
-  void getNext() {
-    current = WordPair.random();
-    notifyListeners();
-  }
-
-  var favorites = <WordPair>[];
-
-  void toggleFavorite(wordPair) {
-    if (favorites.contains(wordPair)) {
-      favorites.remove(wordPair);
-    } else {
-      favorites.add(wordPair);
-    }
-    notifyListeners();
   }
 }
 
@@ -59,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    navBarIndex = 0;
+    navBarIndex = 2;
   }
 
   navigateToExplore() {
@@ -70,7 +56,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
           bottomNavigationBar: BottomNavigationBar(
@@ -97,14 +82,34 @@ class _HomePageState extends State<HomePage> {
           body: [
             const GeneratorPage(),
             const FavoritesPage(),
-            const Placeholder(),
-            const Placeholder(),
-            const Placeholder(),
+            TripPage(navigateToExploreScreen: navigateToExplore),
+            const InboxPage(),
+            const ProfilePage(profile: testProfile),
           ][navBarIndex]);
     });
   }
 }
 
+class MyAppState extends ChangeNotifier {
+  var current = WordPair.random();
+
+  void getNext() {
+    current = WordPair.random();
+    notifyListeners();
+  }
+
+  var favorites = <WordPair>[];
+
+  void toggleFavorite(wordPair) {
+    if (favorites.contains(wordPair)) {
+      favorites.remove(wordPair);
+    } else {
+      favorites.add(wordPair);
+    }
+    notifyListeners();
+  }
+}
+// --- Do not delete ---
 /* 
 This is the navigation layout! Do not delete, we might need it later.
     Widget page;
