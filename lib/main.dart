@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:provider/provider.dart';
@@ -5,7 +7,6 @@ import 'package:quouch_app/mocks/places.dart';
 import 'package:quouch_app/mocks/users.dart';
 import 'package:quouch_app/screens/explore_page.dart';
 import 'package:quouch_app/screens/favorites_page.dart';
-import 'package:quouch_app/screens/generator_page.dart';
 import 'package:quouch_app/screens/inbox_page.dart';
 import 'package:quouch_app/screens/profile_page.dart';
 import 'package:quouch_app/screens/saved_page.dart';

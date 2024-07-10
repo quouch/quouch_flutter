@@ -5,8 +5,7 @@ import 'package:quouch_app/models/enums.dart';
 
 class PageViewWithIndicators extends StatefulWidget {
   const PageViewWithIndicators(
-      {required this.children, this.type = IndicatorType.dots, Key? key})
-      : super(key: key);
+      {required this.children, this.type = IndicatorType.dots, super.key});
   final List<Widget> children;
   final IndicatorType type;
 
