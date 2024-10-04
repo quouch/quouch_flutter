@@ -1,7 +1,6 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quouch_app/pages/pages.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:user_repository/user_repository.dart';
@@ -92,13 +91,11 @@ class _AppViewState extends State<AppView> {
 ThemeData _buildTheme(brightness) {
   var baseTheme = ThemeData(brightness: brightness);
 
+  var textTheme = AppTextTheme(baseTheme).theme;
+
   return baseTheme.copyWith(
     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
     extensions: [AppSpacing()],
-    textTheme: GoogleFonts.mulishTextTheme(baseTheme.textTheme).copyWith(
-      headlineSmall: GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineSmall,
-      headlineMedium: GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineMedium,
-      headlineLarge: GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineLarge,
-    ),
+    textTheme: textTheme,
   );
 }
