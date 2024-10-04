@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:quouch_app/theme/spacing.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({required this.text, this.subtitle, super.key});
+
   final String text;
   final String? subtitle;
 

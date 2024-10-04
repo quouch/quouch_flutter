@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quouch_app/models/enums.dart';
-import 'package:quouch_app/models/place.dart';
-import 'package:quouch_app/models/profile.dart';
+import 'package:quouch_app/models/models.dart';
 
 class Stay {
   final Place place;

@@ -1,4 +1,4 @@
-import 'package:quouch_app/models/profile.dart';
+import 'package:quouch_app/models/models.dart';
 
 enum PlaceType { apartment, condominium, townhome, house, cabin }
 
@@ -25,9 +25,12 @@ class Place {
   final Profile owner;
 
   String get numBedsText => "$bedCount bed${bedCount == 1 ? "" : "s"}";
+
   String get numGuestsText => "$guestCount guest${guestCount == 1 ? "" : "s"}";
+
   String get numBedroomText =>
       "$bedroomCount bedroom${bedroomCount == 1 ? "" : "s"}";
+
   String get numBathsText => "$bathCount bath${bathCount == 1 ? "" : "s"}";
 
   String get typeText => type.toString().split('.')[1];
@@ -56,6 +59,7 @@ class Place {
 class PlaceList {
   final String title;
   final List<Place> savedPlaces;
+
   String get numStaysText =>
       "${savedPlaces.length} stay${savedPlaces.length == 1 ? "" : "s"}";
 

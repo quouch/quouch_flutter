@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:quouch_app/main.dart';
+import 'package:quouch_app/app.dart';
 
 void main() {
   testWidgets('tab navigation', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const QuouchApp());
+    await tester.pumpWidget(const App());
 
     // Verify all icons exist
     expect(find.byIcon(Icons.search), findsOneWidget);
