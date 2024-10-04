@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quouch_app/pages/pages.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:user_repository/user_repository.dart';
@@ -60,11 +61,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        extensions: [AppSpacing()],
-      ),
+      theme: _buildTheme(Brightness.light),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
@@ -90,4 +87,18 @@ class _AppViewState extends State<AppView> {
       onGenerateRoute: (_) => SplashPage.route(),
     );
   }
+}
+
+ThemeData _buildTheme(brightness) {
+  var baseTheme = ThemeData(brightness: brightness);
+
+  return baseTheme.copyWith(
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    extensions: [AppSpacing()],
+    textTheme: GoogleFonts.mulishTextTheme(baseTheme.textTheme).copyWith(
+      headlineSmall: GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineSmall,
+      headlineMedium: GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineMedium,
+      headlineLarge: GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineLarge,
+    ),
+  );
 }

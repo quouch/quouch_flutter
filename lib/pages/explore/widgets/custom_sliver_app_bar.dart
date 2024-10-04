@@ -24,7 +24,8 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
   Widget build(BuildContext context) {
     const double expandedHeight = 600;
     const offset = Offset(36, -42);
-    const double textSize = 30;
+
+    final textTheme = Theme.of(context).textTheme;
 
     return SliverAppBar(
       foregroundColor: Colors.white,
@@ -84,12 +85,14 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
                   Image.network(
                     cabinImageUrl,
                   ),
-                  const Positioned(
+                  Positioned(
                     left: 0,
                     bottom: 0,
                     child: Text(
                       'Made possible\nby Hosts',
-                      style: TextStyle(color: Colors.white, fontSize: textSize),
+                      style: textTheme.headlineLarge!.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   )
                 ],
