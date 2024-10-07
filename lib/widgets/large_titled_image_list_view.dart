@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quouch_app/theme/spacing.dart';
+import 'package:quouch_app/theme/theme.dart';
 import 'package:quouch_app/widgets/large_titled_image_widget.dart';
 
 class LargeTitledImageListView extends StatelessWidget {

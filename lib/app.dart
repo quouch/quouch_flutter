@@ -60,11 +60,9 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        extensions: [AppSpacing()],
-      ),
+      themeMode: ThemeMode.light,
+      theme: AppThemeData.lightThemeData,
+      darkTheme: AppThemeData.darkThemeData,
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
