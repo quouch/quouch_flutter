@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'dart:ui';
+part of 'app_theme.dart';
 
 class AppSpacing extends ThemeExtension<AppSpacing> {
   const AppSpacing({

@@ -1,15 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+part of 'app_theme.dart';
 
 class AppTextTheme {
-  factory AppTextTheme(baseTheme) {
-    var textTheme = GoogleFonts.mulishTextTheme(baseTheme.textTheme).copyWith(
-      headlineSmall:
-          GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineSmall,
-      headlineMedium:
-          GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineMedium,
-      headlineLarge:
-          GoogleFonts.outfitTextTheme(baseTheme.textTheme).headlineLarge,
+  factory AppTextTheme() {
+    var textTheme = GoogleFonts.mulishTextTheme().copyWith(
+      headlineSmall: GoogleFonts.outfitTextTheme().headlineSmall,
+      headlineMedium: GoogleFonts.outfitTextTheme().headlineMedium,
+      headlineLarge: GoogleFonts.outfitTextTheme().headlineLarge,
     );
     return AppTextTheme._internal(textTheme);
   }

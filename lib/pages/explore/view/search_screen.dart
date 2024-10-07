@@ -3,7 +3,7 @@ import 'package:intersperse/intersperse.dart';
 import 'package:quouch_app/mocks/cities.dart';
 import 'package:quouch_app/mocks/images.dart';
 import 'package:quouch_app/pages/explore/widgets/widgets.dart';
-import 'package:quouch_app/theme/spacing.dart';
+import 'package:quouch_app/theme/theme.dart';
 import 'package:quouch_app/widgets/widgets.dart';
 
 class SearchScreen extends StatefulWidget {

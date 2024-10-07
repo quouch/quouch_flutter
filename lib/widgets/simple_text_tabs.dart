@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intersperse/intersperse.dart';
-import 'package:quouch_app/theme/spacing.dart';
+import 'package:quouch_app/theme/theme.dart';
 
 class SimpleTextTabs extends StatefulWidget {
   const SimpleTextTabs(

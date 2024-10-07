@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quouch_app/theme/spacing.dart';
+import 'package:quouch_app/theme/theme.dart';
 
 class DividerBlock extends StatelessWidget {
   const DividerBlock({

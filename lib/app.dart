@@ -60,7 +60,9 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: _buildTheme(Brightness.light),
+      themeMode: ThemeMode.light,
+      theme: AppThemeData.lightThemeData,
+      darkTheme: AppThemeData.darkThemeData,
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
@@ -86,16 +88,4 @@ class _AppViewState extends State<AppView> {
       onGenerateRoute: (_) => SplashPage.route(),
     );
   }
-}
-
-ThemeData _buildTheme(brightness) {
-  var baseTheme = ThemeData(brightness: brightness);
-
-  var textTheme = AppTextTheme(baseTheme).theme;
-
-  return baseTheme.copyWith(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    extensions: [AppSpacing()],
-    textTheme: textTheme,
-  );
 }

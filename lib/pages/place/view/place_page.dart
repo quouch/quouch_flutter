@@ -3,7 +3,7 @@ import 'package:intersperse/intersperse.dart';
 import 'package:quouch_app/mocks/places.dart';
 import 'package:quouch_app/models/models.dart';
 import 'package:quouch_app/pages/place/place.dart';
-import 'package:quouch_app/theme/spacing.dart';
+import 'package:quouch_app/theme/theme.dart';
 import 'package:quouch_app/widgets/widgets.dart';
 
 class PlacePage extends StatefulWidget {
