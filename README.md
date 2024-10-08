@@ -21,11 +21,13 @@ This will run the app on your machine, and you will be able to see the app in ac
 
 ### Translations
 
-We're using internalization following [this guide](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization).
+We're using internalization
+following [this guide](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+and [Localizely's guide](https://localizely.com/blog/flutter-localization-step-by-step-guide/).
 The translations are stored in the `lib/l10n` directory.
 
-Every time you run `flutter pub get` or `flutter run`, codegen will happen automatically. You should find generated files in
-`${root}/.dart_tool/flutter_gen/gen_l10n`. 
+Every time you run `flutter pub get` or `flutter run`, codegen will happen automatically. You should find generated
+files in `${root}/.dart_tool/flutter_gen/gen_l10n`.
 Alternatively, you can also run `flutter gen-l10n` to generate the same files without running the app.
 
 ## Tools
@@ -39,3 +41,20 @@ A few resources to get you started with Flutter development:
 
 For help getting started with Flutter development, view the [online documentation](https://docs.flutter.dev/), which
 offers tutorials, samples, guidance on mobile development, and a full API reference.
+
+### Localizely - Translation software
+
+We're using Localizely to manage our translations. You can find the
+project [here](https://app.localizely.com/projects/65e5f6ef-0f12-4628-a24d-6ea137388310/Version_1.0/dashboard).
+
+To download the latest translations, make sure to have `LOCALIZELY_API_KEY` set in your environment variables and run:
+
+```bash
+sh .github/scripts/download_translations.sh
+```
+
+If you change the main language (english) locally, run the following command to update the translations:
+
+```bash
+ flutter pub run intl_utils:localizely_upload_main --api-token $LOCALIZELY_API_TOKEN
+```
