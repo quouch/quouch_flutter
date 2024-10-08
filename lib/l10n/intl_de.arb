@@ -1,0 +1,23 @@
+{
+  "@@locale": "de",
+  "introNewKey": "Während des Imports erstellte neue Keys können automatisch mit einem Tag versehen werden, sodass Manager und Übersetzer wissen, welche Keys keine Übersetzung haben.",
+  "@introNewKey": {},
+  "introNotReviewedText": "Dies ist eine Übersetzung mit Benachrichtigung, die besagt, dass die Übersetzung nicht überprüft wird.",
+  "@introNotReviewedText": {},
+  "introTooLongText": "Dies ist eine Übersetzung mit Benachrichtigung, die angibt, dass der Text die vorgesehene Länge überschreitet.",
+  "@introTooLongText": {},
+  "introWelcome": "Hallo {firstName}, willkommen bei Localizely. Dies ist ein Beispielprojekt, in dem Sie die Funktionen erkunden können.",
+  "@introWelcome": {
+    "description": "This is a description of a key so that the translator better understands the context"
+  },
+  "pageHomeCounter": "",
+  "@pageHomeCounter": {},
+  "pageHomeTitle": "",
+  "@pageHomeTitle": {},
+  "userEmail": "E-Mail",
+  "@userEmail": {},
+  "userEmailInvalid": "",
+  "@userEmailInvalid": {
+    "description": "Shown when the email is invalid in a form"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "@@locale": "en",
+  "introNewKey": "New keys created during import can be auto-tagged so that managers and translators know what keys miss translation.",
+  "@introNewKey": {},
+  "introNotReviewedText": "This is a translation with notification, which indicates the translation is not reviewed.",
+  "@introNotReviewedText": {},
+  "introTooLongText": "This is a translation with notification, which indicates text exceeds its intended length.",
+  "@introTooLongText": {},
+  "introWelcome": "Hi {firstName}, welcome to Localizely! This is a sample project where you can explore the features.",
+  "@introWelcome": {
+    "description": "This is a description of a key so that the translator better understands the context"
+  },
+  "pageHomeCounter": "You have pushed the button this many times",
+  "@pageHomeCounter": {},
+  "pageHomeTitle": "Sample project Home Page",
+  "@pageHomeTitle": {},
+  "userEmail": "Email",
+  "@userEmail": {},
+  "userEmailInvalid": "invalid email",
+  "@userEmailInvalid": {
+    "description": "Shown when the email is invalid in a form"
+  },
+  "userPassword": "password",
+  "userPasswordInvalid": "invalid password"
+}

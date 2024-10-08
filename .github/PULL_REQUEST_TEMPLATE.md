@@ -15,5 +15,5 @@ Please explain the changes you made here.
 - [ ] Code compiles correctly
 - [ ] Created tests which fail without the change (if possible)
 - [ ] All tests passing
-- [ ] Rubocop passes
+- [ ] Linting passes
 - [ ] Extended the README / documentation, if necessary
