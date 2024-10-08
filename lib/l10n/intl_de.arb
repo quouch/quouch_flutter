@@ -1,0 +1,5 @@
+{
+  "hello": "Hallo {userName}",
+  "username": "E-Mail",
+  "@@locale": "de"
+}

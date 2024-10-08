@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quouch_app/pages/login/login.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:formz/formz.dart';
+import 'package:quouch_app/pages/login/login.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -39,7 +40,7 @@ class _UsernameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final displayError = context.select(
-          (LoginBloc bloc) => bloc.state.username.displayError,
+      (LoginBloc bloc) => bloc.state.username.displayError,
     );
 
     return TextField(
@@ -48,7 +49,7 @@ class _UsernameInput extends StatelessWidget {
         context.read<LoginBloc>().add(LoginUsernameChanged(username));
       },
       decoration: InputDecoration(
-        labelText: 'username',
+        labelText: AppLocalizations.of(context)!.username,
         errorText: displayError != null ? 'invalid username' : null,
       ),
     );
@@ -59,7 +60,7 @@ class _PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final displayError = context.select(
-          (LoginBloc bloc) => bloc.state.password.displayError,
+      (LoginBloc bloc) => bloc.state.password.displayError,
     );
 
     return TextField(
@@ -80,7 +81,7 @@ class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isInProgressOrSuccess = context.select(
-          (LoginBloc bloc) => bloc.state.status.isInProgressOrSuccess,
+      (LoginBloc bloc) => bloc.state.status.isInProgressOrSuccess,
     );
 
     if (isInProgressOrSuccess) return const CircularProgressIndicator();

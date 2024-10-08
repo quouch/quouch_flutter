@@ -19,6 +19,15 @@ flutter run
 
 This will run the app on your machine, and you will be able to see the app in action.
 
+### Translations
+
+We're using internalization following [this guide](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization).
+The translations are stored in the `lib/l10n` directory.
+
+Every time you run `flutter pub get` or `flutter run`, codegen will happen automatically. You should find generated files in
+`${root}/.dart_tool/flutter_gen/gen_l10n`. 
+Alternatively, you can also run `flutter gen-l10n` to generate the same files without running the app.
+
 ## Tools
 
 ### Flutter SDK
