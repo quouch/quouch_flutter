@@ -3,36 +3,53 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:formz/formz.dart';
 import 'package:quouch_app/pages/login/login.dart';
+import 'package:quouch_app/theme/theme.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final spacing = Theme.of(context).extension<AppSpacing>()!;
+
     return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
-        if (state.status.isFailure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(state.error)),
-            );
-        }
-      },
-      child: Align(
-        alignment: const Alignment(0, -1 / 3),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _UsernameInput(),
-            const Padding(padding: EdgeInsets.all(12)),
-            _PasswordInput(),
-            const Padding(padding: EdgeInsets.all(12)),
-            _LoginButton(),
-          ],
-        ),
-      ),
-    );
+        listener: (context, state) {
+          if (state.status.isFailure) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+          }
+        },
+        child: Align(
+          alignment: const Alignment(0, -1 / 3),
+          child: Padding(
+            padding: EdgeInsets.all(spacing.lg),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  '/images/login_header.png',
+                  height: 120,
+                ),
+                Text('Welcome back!',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.primary)),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _UsernameInput(),
+                    const Padding(padding: EdgeInsets.all(12)),
+                    _PasswordInput(),
+                    const Padding(padding: EdgeInsets.all(12)),
+                    _LoginButton(),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }
 
