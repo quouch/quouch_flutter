@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:formz/formz.dart';
-import 'package:quouch_app/generated/l10n.dart';
 import 'package:quouch_app/pages/login/login.dart';
 
 class LoginForm extends StatelessWidget {
@@ -43,7 +43,7 @@ class _UsernameInput extends StatelessWidget {
       (LoginBloc bloc) => bloc.state.username.displayError,
     );
 
-    var localizations = S.of(context);
+    var localizations = AppLocalizations.of(context)!;
     return TextField(
       key: const Key('loginForm_usernameInput_textField'),
       onChanged: (username) {
@@ -63,6 +63,7 @@ class _PasswordInput extends StatelessWidget {
     final displayError = context.select(
       (LoginBloc bloc) => bloc.state.password.displayError,
     );
+    var localizations = AppLocalizations.of(context)!;
 
     return TextField(
       key: const Key('loginForm_passwordInput_textField'),
@@ -71,8 +72,9 @@ class _PasswordInput extends StatelessWidget {
       },
       obscureText: true,
       decoration: InputDecoration(
-        labelText: S.of(context).userPassword,
-        errorText: displayError != null ? S.of(context).userPasswordInvalid : null,
+        labelText: localizations.userPassword,
+        errorText:
+            displayError != null ? localizations.userPasswordInvalid : null,
       ),
     );
   }

@@ -19,5 +19,9 @@
   "userEmailInvalid": "",
   "@userEmailInvalid": {
     "description": "Shown when the email is invalid in a form"
-  }
+  },
+  "userPassword": "",
+  "@userPassword": {},
+  "userPasswordInvalid": "",
+  "@userPasswordInvalid": {}
 }

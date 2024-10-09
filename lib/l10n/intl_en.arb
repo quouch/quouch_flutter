@@ -21,5 +21,7 @@
     "description": "Shown when the email is invalid in a form"
   },
   "userPassword": "password",
-  "userPasswordInvalid": "invalid password"
+  "@userPassword": {},
+  "userPasswordInvalid": "invalid password",
+  "@userPasswordInvalid": {}
 }
