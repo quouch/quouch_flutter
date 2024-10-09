@@ -50,11 +50,15 @@ class AuthenticationRepository {
     }
   }
 
-  Future<void> saveUser({required User user}) async {
+  Future<void> _saveUser({required User user}) async {
     _cache.writeObject(key: userCacheKey, value: user.toJson());
   }
 
-  get headers {
+  Future<void> _clearUser() async {
+    _cache.remove(key: userCacheKey);
+  }
+
+  get _headers {
     return {
       'Content-Type': 'application/json',
     };
@@ -69,13 +73,13 @@ class AuthenticationRepository {
     };
     await http
         .post(Uri.parse('${this.apiBaseUrl}/login'),
-            body: jsonEncode(body), headers: headers)
+            body: jsonEncode(body), headers: _headers)
         .then((response) {
       if (response.statusCode != 200) {
         throw AuthorizationFailure.fromCode(response.statusCode);
       } else {
         var userData = jsonDecode(response.body)['data'];
-        saveUser(user: User.fromJson(userData));
+        _saveUser(user: User.fromJson(userData));
         _controller.add(AuthenticationStatus.authenticated);
       }
     });
@@ -83,7 +87,7 @@ class AuthenticationRepository {
 
   void logOut() {
     _controller.add(AuthenticationStatus.unauthenticated);
-    saveUser(user: User.empty);
+    _clearUser();
   }
 
   void dispose() => _controller.close();
