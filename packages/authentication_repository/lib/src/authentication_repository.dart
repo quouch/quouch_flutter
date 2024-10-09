@@ -1,35 +1,81 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:cache/cache.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:user_repository/user_repository.dart';
+
+part 'authorization_failure.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
 class AuthenticationRepository {
-  AuthenticationRepository(this.apiBaseUrl);
-
+  AuthenticationRepository({CacheClient? cache, required this.apiBaseUrl})
+      : _cache = cache ?? CacheClient();
+  final CacheClient _cache;
   final _controller = StreamController<AuthenticationStatus>();
+
   final String apiBaseUrl;
 
+  /// Whether or not the current environment is web
+  /// Should only be overridden for testing purposes. Otherwise,
+  /// defaults to [kIsWeb]
+  @visibleForTesting
+  bool isWeb = kIsWeb;
+
+  /// User cache key.
+  /// Should only be used for testing purposes.
+  @visibleForTesting
+  static const userCacheKey = '__user_cache_key__';
+
+  /// Returns the current cached user.
+  /// Defaults to [User.empty] if there is no cached user.
+  Future<User> get currentUser async {
+    var user = await _cache.readObject(key: userCacheKey);
+    if (user.isEmpty) {
+      return User.empty;
+    }
+    return User.fromJson(user);
+  }
+
   Stream<AuthenticationStatus> get status async* {
-    await Future<void>.delayed(const Duration(seconds: 1));
-    yield AuthenticationStatus.unauthenticated;
-    yield* _controller.stream;
+    var cachedUser = await currentUser;
+    if (cachedUser.id != '-') {
+      yield AuthenticationStatus.authenticated;
+    } else {
+      yield AuthenticationStatus.unauthenticated;
+
+      yield* _controller.stream;
+    }
+  }
+
+  Future<void> saveUser({required User user}) async {
+    _cache.writeObject(key: userCacheKey, value: user.toJson());
+  }
+
+  get headers {
+    return {
+      'Content-Type': 'application/json',
+    };
   }
 
   Future<void> logIn({
     required String email,
     required String password,
   }) async {
-    await http.post(Uri.parse('${this.apiBaseUrl}/login'), body: {
-      'email': email,
-      'password': password,
-    }).then((response) {
+    var body = {
+      'user': {'email': email, 'password': password}
+    };
+    await http
+        .post(Uri.parse('${this.apiBaseUrl}/login'),
+            body: jsonEncode(body), headers: headers)
+        .then((response) {
       if (response.statusCode != 200) {
-        var error = jsonDecode(response.body)['errors'][0];
-        _controller.addError(error);
-        throw error['title'];
+        throw AuthorizationFailure.fromCode(response.statusCode);
       } else {
+        var userData = jsonDecode(response.body)['data'];
+        saveUser(user: User.fromJson(userData));
         _controller.add(AuthenticationStatus.authenticated);
       }
     });
@@ -37,6 +83,7 @@ class AuthenticationRepository {
 
   void logOut() {
     _controller.add(AuthenticationStatus.unauthenticated);
+    saveUser(user: User.empty);
   }
 
   void dispose() => _controller.close();

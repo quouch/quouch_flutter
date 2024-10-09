@@ -1,4 +1,5 @@
 import 'package:authentication_repository/authentication_repository.dart';
+import 'package:cache/cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,12 +19,15 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   late final AuthenticationRepository _authenticationRepository;
   late final UserRepository _userRepository;
+  late final CacheClient _cache;
 
   @override
   void initState() {
     super.initState();
-    _authenticationRepository = AuthenticationRepository(F.apiBaseUrl);
-    _userRepository = UserRepository(F.apiBaseUrl);
+    _cache = CacheClient();
+    _authenticationRepository =
+        AuthenticationRepository(apiBaseUrl: F.apiBaseUrl, cache: _cache);
+    _userRepository = UserRepository(apiBaseUrl: F.apiBaseUrl, cache: _cache);
   }
 
   @override

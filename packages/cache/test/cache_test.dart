@@ -7,9 +7,9 @@ void main() {
       final cache = CacheClient();
       const key = '__key__';
       const value = '__value__';
-      expect(cache.read(key: key), isNull);
-      cache.write(key: key, value: value);
-      expect(cache.read(key: key), equals(value));
+      expect(cache.readString(key: key), isNull);
+      cache.writeString(key: key, value: value);
+      expect(cache.readString(key: key), equals(value));
     });
   });
 }

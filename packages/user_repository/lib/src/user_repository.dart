@@ -1,20 +1,28 @@
 import 'dart:async';
 
+import 'package:cache/cache.dart';
 import 'package:user_repository/src/models/models.dart';
-import 'package:uuid/uuid.dart';
 
 class UserRepository {
-  UserRepository(this.apiBaseUrl);
-
+  UserRepository({CacheClient? cache, required this.apiBaseUrl})
+      : _cache = cache ?? CacheClient();
   final String apiBaseUrl;
+  final CacheClient _cache;
+
+  static const userCacheKey = '__user_cache_key__';
 
   User? _user;
 
+  /// Returns the current cached user.
+  /// Defaults to [User.empty] if there is no cached user.
+  Future<User> get currentUser async {
+    var userData = await _cache.readObject(key: userCacheKey);
+    return User.fromJson(userData);
+  }
+
   Future<User?> getUser() async {
     if (_user != null) return _user;
-    return Future.delayed(
-      const Duration(milliseconds: 300),
-      () => _user = User(const Uuid().v4()),
-    );
+    _user = await currentUser;
+    return Future.value(_user);
   }
 }
