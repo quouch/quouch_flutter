@@ -22,8 +22,8 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    _authenticationRepository = AuthenticationRepository();
-    _userRepository = UserRepository();
+    _authenticationRepository = AuthenticationRepository(F.apiBaseUrl);
+    _userRepository = UserRepository(F.apiBaseUrl);
   }
 
   @override

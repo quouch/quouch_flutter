@@ -4,6 +4,10 @@ import 'package:user_repository/src/models/models.dart';
 import 'package:uuid/uuid.dart';
 
 class UserRepository {
+  UserRepository(this.apiBaseUrl);
+
+  final String apiBaseUrl;
+
   User? _user;
 
   Future<User?> getUser() async {
