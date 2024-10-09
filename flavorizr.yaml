@@ -1,0 +1,27 @@
+ide: "idea"
+app:
+  android:
+    flavorDimensions: "flavor-type"
+  ios:
+    schema: true
+flavors:
+  dev:
+    app:
+      name: "Quouch Dev"
+      icon: "assets/icon/icon.png"
+    android:
+      applicationId: "com.quouch.dev-app"
+    ios:
+      bundleId: "com.quouch.dev-app"
+    macos:
+      bundleId: "com.quouch.dev-app"
+  prod:
+    app:
+      name: "Quouch"
+      icon: "assets/icon/icon.png"
+    android:
+      applicationId: "com.quouch.app"
+    ios:
+      bundleId: "com.quouch.app"
+    macos:
+      bundleId: "com.quouch.app"

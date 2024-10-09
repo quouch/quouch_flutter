@@ -6,6 +6,8 @@ import 'package:quouch_app/pages/pages.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:user_repository/user_repository.dart';
 
+import 'flavors.dart';
+
 class App extends StatefulWidget {
   const App({super.key});
 
@@ -61,6 +63,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: F.title,
       themeMode: ThemeMode.light,
       theme: AppThemeData.lightThemeData,
       darkTheme: AppThemeData.darkThemeData,
