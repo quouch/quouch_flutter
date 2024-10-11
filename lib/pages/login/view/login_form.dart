@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:formz/formz.dart';
 import 'package:quouch_app/pages/login/login.dart';
+import 'package:quouch_app/pages/login/view/sign_up_page.dart';
 import 'package:quouch_app/theme/theme.dart';
+
+import 'forgot_password_page.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -23,29 +26,43 @@ class LoginForm extends StatelessWidget {
           }
         },
         child: Align(
-          alignment: const Alignment(0, -1 / 3),
           child: Padding(
             padding: EdgeInsets.all(spacing.lg),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(
-                  '/images/login_header.png',
-                  height: 120,
+                Flexible(
+                  flex: 3,
+                  child: Image.asset(
+                    'assets/images/login_header.png',
+                    width: 300,
+                  ),
                 ),
-                Text('Welcome back!',
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary)),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _UsernameInput(),
-                    const Padding(padding: EdgeInsets.all(12)),
-                    _PasswordInput(),
-                    const Padding(padding: EdgeInsets.all(12)),
-                    _LoginButton(),
-                  ],
-                )
+                Spacer(flex: 1),
+                Flexible(
+                  flex: 2,
+                  child: Text('Welcome back!',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
+                          ?.copyWith(
+                              color: Theme.of(context).colorScheme.primary)),
+                ),
+                Spacer(flex: 1),
+                Flexible(
+                    flex: 5,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _UsernameInput(),
+                        const Padding(padding: EdgeInsets.all(12)),
+                        _PasswordInput(),
+                        const Padding(padding: EdgeInsets.all(12)),
+                        _LoginButton(),
+                        _ForgotPasswordButton(),
+                        _SignUpButton(),
+                      ],
+                    )),
               ],
             ),
           ),
@@ -114,6 +131,30 @@ class _LoginButton extends StatelessWidget {
           ? () => context.read<LoginBloc>().add(const LoginSubmitted())
           : null,
       child: const Text('Login'),
+    );
+  }
+}
+
+class _ForgotPasswordButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      key: const Key('loginForm_forgotPassword_textButton'),
+      onPressed: () =>
+          Navigator.of(context).push<void>(ForgotPasswordPage.route()),
+      child:
+          const Text('Forgot password?', style: TextStyle(color: Colors.grey)),
+    );
+  }
+}
+
+class _SignUpButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      key: const Key('loginForm_signUp_textButton'),
+      onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
+      child: const Text('Sign Up'),
     );
   }
 }
