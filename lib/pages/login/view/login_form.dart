@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:quouch_app/pages/login/login.dart';
 import 'package:quouch_app/pages/login/view/sign_up_page.dart';
 import 'package:quouch_app/theme/theme.dart';
+import 'package:quouch_app/widgets/widgets.dart';
 
 import 'forgot_password_page.dart';
 
@@ -28,42 +29,42 @@ class LoginForm extends StatelessWidget {
         child: Align(
           child: Padding(
             padding: EdgeInsets.all(spacing.lg),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Image.asset(
-                    'assets/images/login_header.png',
-                    width: 300,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    child: Image.asset(
+                      'assets/images/login_header.png',
+                      width: 300,
+                    ),
                   ),
-                ),
-                Spacer(flex: 1),
-                Flexible(
-                  flex: 2,
-                  child: Text('Welcome back!',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
-                          ?.copyWith(
-                              color: Theme.of(context).colorScheme.primary)),
-                ),
-                Spacer(flex: 1),
-                Flexible(
-                    flex: 5,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _UsernameInput(),
-                        const Padding(padding: EdgeInsets.all(12)),
-                        _PasswordInput(),
-                        const Padding(padding: EdgeInsets.all(12)),
-                        _LoginButton(),
-                        _ForgotPasswordButton(),
-                        _SignUpButton(),
-                      ],
-                    )),
-              ],
+                  AppSpacer(size: SizeKey.xl),
+                  Container(
+                    child: Text(AppLocalizations.of(context)!.loginTitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                                color: Theme.of(context).colorScheme.primary)),
+                  ),
+                  AppSpacer(size: SizeKey.xl),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _UsernameInput(),
+                      AppSpacer(size: SizeKey.sm),
+                      _PasswordInput(),
+                      AppSpacer(size: SizeKey.sm),
+                      _LoginButton(),
+                      AppSpacer(size: SizeKey.thin),
+                      _ForgotPasswordButton(),
+                      AppSpacer(size: SizeKey.thin),
+                      _SignUpButton(),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ));
@@ -126,12 +127,11 @@ class _LoginButton extends StatelessWidget {
     final isValid = context.select((LoginBloc bloc) => bloc.state.isValid);
 
     return ElevatedButton(
-      key: const Key('loginForm_continue_raisedButton'),
-      onPressed: isValid
-          ? () => context.read<LoginBloc>().add(const LoginSubmitted())
-          : null,
-      child: const Text('Login'),
-    );
+        key: const Key('loginForm_continue_raisedButton'),
+        onPressed: isValid
+            ? () => context.read<LoginBloc>().add(const LoginSubmitted())
+            : null,
+        child: Text(AppLocalizations.of(context)!.loginButton.toUpperCase()));
   }
 }
 
@@ -142,8 +142,10 @@ class _ForgotPasswordButton extends StatelessWidget {
       key: const Key('loginForm_forgotPassword_textButton'),
       onPressed: () =>
           Navigator.of(context).push<void>(ForgotPasswordPage.route()),
-      child:
-          const Text('Forgot password?', style: TextStyle(color: Colors.grey)),
+      child: Text(
+        AppLocalizations.of(context)!.loginForgotPasswordButton,
+      ),
+      style: ButtonsTheme().neutralLink,
     );
   }
 }
@@ -154,7 +156,8 @@ class _SignUpButton extends StatelessWidget {
     return TextButton(
       key: const Key('loginForm_signUp_textButton'),
       onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
-      child: const Text('Sign Up'),
+      child: Text(AppLocalizations.of(context)!.loginSignUpButton),
+      style: ButtonsTheme().primaryLink,
     );
   }
 }

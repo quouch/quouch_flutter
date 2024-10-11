@@ -14,14 +14,18 @@
   "@pageHomeCounter": {},
   "pageHomeTitle": "Sample project Home Page",
   "@pageHomeTitle": {},
-  "userEmail": "Email",
+  "userEmail": "Email address",
   "@userEmail": {},
   "userEmailInvalid": "invalid email",
   "@userEmailInvalid": {
     "description": "Shown when the email is invalid in a form"
   },
-  "userPassword": "password",
+  "userPassword": "Password",
   "@userPassword": {},
   "userPasswordInvalid": "invalid password",
-  "@userPasswordInvalid": {}
+  "@userPasswordInvalid": {},
+  "loginTitle": "Welcome back!",
+  "loginButton": "Login",
+  "loginForgotPasswordButton": "Forgot password?",
+  "loginSignUpButton": "New here? Sign up to become a quoucher!"
 }

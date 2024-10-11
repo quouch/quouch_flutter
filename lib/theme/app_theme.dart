@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+part 'buttons_theme.dart';
+
 part 'spacing.dart';
 
 part 'text_theme.dart';
@@ -19,7 +21,7 @@ class AppThemeData {
 
     return ThemeData(
       colorScheme: colorScheme,
-      extensions: [AppSpacing()],
+      extensions: [AppSpacing(), ButtonsTheme()],
       textTheme: textTheme,
       bottomAppBarTheme: BottomAppBarTheme(
         color: AppColors.primary1,
@@ -27,6 +29,30 @@ class AppThemeData {
       appBarTheme: AppBarTheme(
         color: AppColors.primary1,
         iconTheme: IconThemeData(color: AppColors.primary),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: AppColors.neutral1,
+        filled: true,
+        labelStyle: textTheme.bodyLarge!.copyWith(color: AppColors.gray3),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide.none),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonsTheme().primary.copyWith(
+              padding: WidgetStateProperty.all(
+                EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              ),
+              minimumSize: WidgetStateProperty.all(Size(100, 40)),
+              shape: WidgetStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonsTheme().primaryLink,
       ),
     );
   }
