@@ -42,11 +42,8 @@ class LoginForm extends StatelessWidget {
                   AppSpacer(size: SizeKey.xl),
                   Container(
                     child: Text(AppLocalizations.of(context)!.loginTitle,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.copyWith(
-                                color: Theme.of(context).colorScheme.primary)),
+                        style: AppTextTheme().header5.copyWith(
+                            color: Theme.of(context).colorScheme.primary)),
                   ),
                   AppSpacer(size: SizeKey.xl),
                   Column(
@@ -131,7 +128,8 @@ class _LoginButton extends StatelessWidget {
         onPressed: isValid
             ? () => context.read<LoginBloc>().add(const LoginSubmitted())
             : null,
-        child: Text(AppLocalizations.of(context)!.loginButton.toUpperCase()));
+        child: Text(AppLocalizations.of(context)!.loginButton.toUpperCase(),
+            style: AppTextTheme().buttonLarge));
   }
 }
 
@@ -144,8 +142,9 @@ class _ForgotPasswordButton extends StatelessWidget {
           Navigator.of(context).push<void>(ForgotPasswordPage.route()),
       child: Text(
         AppLocalizations.of(context)!.loginForgotPasswordButton,
+        style: AppTextTheme().buttonExtraSmall,
       ),
-      style: ButtonsTheme().neutralLink,
+      style: AppButtonsTheme().neutralLink,
     );
   }
 }
@@ -156,8 +155,11 @@ class _SignUpButton extends StatelessWidget {
     return TextButton(
       key: const Key('loginForm_signUp_textButton'),
       onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
-      child: Text(AppLocalizations.of(context)!.loginSignUpButton),
-      style: ButtonsTheme().primaryLink,
+      child: Text(
+        AppLocalizations.of(context)!.loginSignUpButton,
+        style: AppTextTheme().body3,
+      ),
+      style: AppButtonsTheme().primaryLink,
     );
   }
 }

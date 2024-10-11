@@ -17,11 +17,11 @@ class AppThemeData {
   static ThemeData darkThemeData = themeData(darkColorScheme, _darkFocusColor);
 
   static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {
-    var textTheme = AppTextTheme().theme;
+    var textTheme = TextThemeFactory().theme;
 
     return ThemeData(
       colorScheme: colorScheme,
-      extensions: [AppSpacing(), ButtonsTheme()],
+      extensions: [AppSpacing(), AppButtonsTheme(), AppTextTheme()],
       textTheme: textTheme,
       bottomAppBarTheme: BottomAppBarTheme(
         color: AppColors.primary1,
@@ -33,13 +33,13 @@ class AppThemeData {
       inputDecorationTheme: InputDecorationTheme(
         fillColor: AppColors.neutral1,
         filled: true,
-        labelStyle: textTheme.bodyLarge!.copyWith(color: AppColors.gray3),
+        labelStyle: AppTextTheme().body1.copyWith(color: AppColors.gray3),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonsTheme().primary.copyWith(
+        style: AppButtonsTheme().primary.copyWith(
               padding: WidgetStateProperty.all(
                 EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               ),
@@ -52,7 +52,7 @@ class AppThemeData {
             ),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: ButtonsTheme().primaryLink,
+        style: AppButtonsTheme().primaryLink,
       ),
     );
   }

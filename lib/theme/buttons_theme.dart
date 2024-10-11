@@ -1,6 +1,6 @@
 part of 'app_theme.dart';
 
-class ButtonsTheme extends ThemeExtension<ButtonsTheme> {
+class AppButtonsTheme extends ThemeExtension<AppButtonsTheme> {
   ButtonStyle _base = ButtonStyle(
     padding: WidgetStateProperty.all(
       EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -177,23 +177,28 @@ class ButtonsTheme extends ThemeExtension<ButtonsTheme> {
         ),
       );
 
+  TextStyle get buttonLarge => TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+
   @override
-  ThemeExtension<ButtonsTheme> copyWith(
+  ThemeExtension<AppButtonsTheme> copyWith(
       {ButtonStyle? primary,
       ButtonStyle? primaryOutlined,
       ButtonStyle? primaryLink,
       ButtonStyle? secondary,
       ButtonStyle? secondaryOutlined,
       ButtonStyle? secondaryLink}) {
-    return ButtonsTheme();
+    return AppButtonsTheme();
   }
 
   @override
-  ThemeExtension<ButtonsTheme> lerp(
-      covariant ThemeExtension<ButtonsTheme>? other, double t) {
-    if (other is! ButtonsTheme) {
+  ThemeExtension<AppButtonsTheme> lerp(
+      covariant ThemeExtension<AppButtonsTheme>? other, double t) {
+    if (other is! AppButtonsTheme) {
       return this;
     }
-    return ButtonsTheme();
+    return AppButtonsTheme();
   }
 }
