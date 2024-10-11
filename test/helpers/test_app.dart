@@ -8,6 +8,7 @@ import 'package:mockito/mockito.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:quouch_app/main.dart';
 import 'package:quouch_app/pages/authentication/authentication.dart';
+import 'package:quouch_app/pages/login/bloc/login_bloc.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:user_repository/user_repository.dart';
 

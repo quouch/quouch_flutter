@@ -70,6 +70,8 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
   mocktail: ^1.0.0
   flutter_launcher_icons: ^0.14.1
   # A flutter utility to easily create flavors in your flutter application
