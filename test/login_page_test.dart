@@ -12,7 +12,8 @@ class TestLoginPage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => LoginBloc(
-          authenticationRepository: MockAuthenticationRepository(),
+          authenticationRepository:
+              context.read<MockAuthenticationRepository>(),
         ),
         child: const LoginForm(),
       ),
@@ -22,8 +23,7 @@ class TestLoginPage extends StatelessWidget {
 
 void main() {
   testWidgets('LoginPage widget test', (WidgetTester tester) async {
-    // Mock the AuthenticationRepository
-    Element context = await initializeWidgetForTest(tester, TestLoginPage());
+    await initializeWidgetForTest(tester, LoginPage());
 
     // Find widgets
     final usernameInputFinder = find.byType(UsernameInput);

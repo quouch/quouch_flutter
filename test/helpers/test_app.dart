@@ -19,21 +19,23 @@ part 'mocked_repositories.dart';
 class TestApp extends StatelessWidget {
   final dynamic home;
 
-  const TestApp({required this.home});
+  TestApp({required this.home});
+
+  final AuthenticationRepository _authenticationRepository =
+      AuthenticationRepository(apiBaseUrl: 'localhost');
+  final UserRepository _userRepository =
+      UserRepository(apiBaseUrl: 'localhost');
 
   @override
   Widget build(BuildContext context) {
     initCloudinary();
-    var mockAuthenticationRepository = MockAuthenticationRepository();
-    var mockUserRepository = MockUserRepository();
-
     return RepositoryProvider.value(
-      value: mockAuthenticationRepository,
+      value: _authenticationRepository,
       child: BlocProvider(
           lazy: false,
           create: (_) => AuthenticationBloc(
-                authenticationRepository: mockAuthenticationRepository,
-                userRepository: mockUserRepository,
+                authenticationRepository: _authenticationRepository,
+                userRepository: _userRepository,
               )..add(AuthenticationSubscriptionRequested()),
           child: MaterialApp(
             home: home,
