@@ -55,7 +55,7 @@ class HomeView extends StatelessWidget {
             _HomeTabButton(
               groupValue: selectedTab,
               value: HomeTab.explore,
-              icon: const Icon(Icons.search),
+              icon: const Icon(Icons.explore),
             ),
             _HomeTabButton(
               groupValue: selectedTab,
@@ -97,7 +97,9 @@ class _HomeTabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var tabName = value.toString().split('.').last;
     return IconButton(
+      key: Key('home_tab_button_$tabName'),
       onPressed: () => context.read<HomeCubit>().setTab(value),
       iconSize: 32,
       color:
