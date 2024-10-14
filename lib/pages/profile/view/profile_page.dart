@@ -1,4 +1,3 @@
-import 'package:cloudinary_flutter/image/cld_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quouch_app/mocks/users.dart';
@@ -131,8 +130,8 @@ class ProfilePage extends StatelessWidget {
                 ),
                 Center(
                   heightFactor: 1.5,
-                  child: CldImageWidget(
-                    publicId: 'v1680011936/logo',
+                  child: Image.network(
+                    profile.profileImageUrl,
                     height: 40,
                   ),
                 ),
