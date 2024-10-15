@@ -45,7 +45,7 @@ void main() {
     });
 
     test('logIn makes a POST request and updates the status', () async {
-      var user = {'id': '1'};
+      var user = {'id': '1', 'name': 'Test User'};
       var returnedData = jsonEncode({'data': user});
       when(mockHttpClient.post(any,
               body: anyNamed('body'), headers: anyNamed('headers')))

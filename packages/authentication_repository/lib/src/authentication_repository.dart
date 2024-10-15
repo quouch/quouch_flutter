@@ -57,7 +57,8 @@ class AuthenticationRepository {
   }
 
   Future<void> _saveUser({required User user}) async {
-    _cache.writeObject(key: userCacheKey, value: user.toJson());
+    var json = user.toJson();
+    _cache.writeObject(key: userCacheKey, value: json);
   }
 
   Future<void> _clearUser() async {
