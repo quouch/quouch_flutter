@@ -8,15 +8,16 @@ environment:
 dependencies:
   user_repository:
     path: ../user_repository
+  cache:
+    path: ../cache
 
   http: ^1.2.2
   equatable: ^2.0.5
-  cache:
-    path: ../cache
   flutter:
     sdk: flutter
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mocktail: ^1.0.0
   plugin_platform_interface: ^2.1.7
+  mockito: ^5.4.4
+  build_runner: ^2.4.13

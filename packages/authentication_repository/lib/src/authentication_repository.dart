@@ -6,14 +6,17 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:user_repository/user_repository.dart';
 
-part 'authorization_failure.dart';
+part 'authentication_failure.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
 class AuthenticationRepository {
-  AuthenticationRepository({CacheClient? cache, required this.apiBaseUrl})
-      : _cache = cache ?? CacheClient();
+  AuthenticationRepository(
+      {CacheClient? cache, http.Client? httpClient, required this.apiBaseUrl})
+      : _cache = cache ?? CacheClient(),
+        _httpClient = httpClient ?? http.Client();
   final CacheClient _cache;
+  final http.Client _httpClient;
   final _controller = StreamController<AuthenticationStatus>();
 
   final String apiBaseUrl;
@@ -28,6 +31,9 @@ class AuthenticationRepository {
   /// Should only be used for testing purposes.
   @visibleForTesting
   static const userCacheKey = '__user_cache_key__';
+
+  @visibleForTesting
+  StreamController<AuthenticationStatus> get controller => _controller;
 
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
@@ -67,16 +73,16 @@ class AuthenticationRepository {
   Future<void> logIn({
     required String email,
     required String password,
-  }) async {
+  }) {
     var body = {
       'user': {'email': email, 'password': password}
     };
-    await http
+    return _httpClient
         .post(Uri.parse('${this.apiBaseUrl}/login'),
             body: jsonEncode(body), headers: _headers)
         .then((response) {
       if (response.statusCode != 200) {
-        throw AuthorizationFailure.fromCode(response.statusCode);
+        throw AuthenticationFailure.fromCode(response.statusCode);
       } else {
         var userData = jsonDecode(response.body)['data'];
         _saveUser(user: User.fromJson(userData));
