@@ -2,47 +2,46 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// {@template cache_client}
-/// An in-memory cache client.
-/// {@endtemplate}
 class CacheClient {
-  /// {@macro cache_client}
-  CacheClient();
+  CacheClient({SharedPreferencesAsync? prefs})
+      : prefs = prefs ?? SharedPreferencesAsync();
 
-  Future<SharedPreferences> get _prefs => SharedPreferences.getInstance();
+  final SharedPreferencesAsync prefs;
 
-  void writeBool({required String key, required bool value}) {
-    _prefs.then((prefs) => prefs.setBool(key, value));
+  Future<void> writeBool({required String key, required bool value}) {
+    return prefs.setBool(key, value);
   }
 
-  Future<bool?> readBool({required String key}) async {
-    return await _prefs.then((prefs) => prefs.getBool(key));
+  Future<bool?> readBool({required String key}) {
+    return prefs.getBool(key);
   }
 
-  void writeInt({required String key, required int value}) {
-    _prefs.then((prefs) => prefs.setInt(key, value));
+  Future<void> writeInt({required String key, required int value}) {
+    return prefs.setInt(key, value);
   }
 
-  Future<int?> readInt({required String key}) async {
-    return await _prefs.then((prefs) => prefs.getInt(key));
+  Future<int?> readInt({required String key}) {
+    return prefs.getInt(key);
   }
 
-  void writeString({required String key, required String value}) {
-    _prefs.then((prefs) => prefs.setString(key, value));
+  Future<void> writeString({required String key, required String value}) {
+    return prefs.setString(key, value);
   }
 
-  void writeObject({required String key, required Map<String, dynamic> value}) {
+  Future<void> writeObject(
+      {required String key, required Map<String, dynamic> value}) {
     var valueString = jsonEncode(value);
-    writeString(key: key, value: valueString);
+    return writeString(key: key, value: valueString);
   }
 
-  Future<dynamic> readString({required String key}) async {
-    return (await _prefs).getString(key) ?? null;
+  Future<String?>? readString({required String key}) {
+    return prefs.getString(key);
   }
 
   Future<Map<String, dynamic>> readObject({required String key}) async {
     try {
       var valueString = await readString(key: key);
+      print(valueString);
       if (valueString == null) throw Exception('Value is null');
       return jsonDecode(valueString);
     } on FormatException {
@@ -54,8 +53,7 @@ class CacheClient {
     }
   }
 
-  void remove({required String key}) {
-    print('remove: $key');
-    _prefs.then((prefs) => prefs.remove(key));
+  Future<void> remove({required String key}) {
+    return prefs.remove(key);
   }
 }
