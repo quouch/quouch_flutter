@@ -20,7 +20,13 @@ if [ -z "$package" ]; then
 else
   cd packages/$package || exit
   echo "Generating coverage report for package $package"
+
+  # Run builder to generate mocks
+  dart run build_runner build --delete-conflicting-outputs
 fi
+
+# Run the tests
+flutter test --coverage
 
 # Generate the coverage report
 genhtml coverage/lcov.info -o coverage/html

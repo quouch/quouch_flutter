@@ -36,6 +36,12 @@ dart run build_runner build
 flutter test
 ```
 
+If you want to get a coverage report for the packages, run the following command:
+
+```bash
+sh test_with_coverage_report.sh -p <package_name>
+```
+
 
 ### Translations
 

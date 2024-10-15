@@ -41,7 +41,6 @@ class CacheClient {
   Future<Map<String, dynamic>> readObject({required String key}) async {
     try {
       var valueString = await readString(key: key);
-      print(valueString);
       if (valueString == null) throw Exception('Value is null');
       return jsonDecode(valueString);
     } on FormatException {
