@@ -1,5 +1,6 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:cache/cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,9 +23,9 @@ class TestApp extends StatelessWidget {
   TestApp({required this.home});
 
   final AuthenticationRepository _authenticationRepository =
-      AuthenticationRepository(apiBaseUrl: 'localhost');
+      AuthenticationRepository(cache: MockCacheClient(), apiBaseUrl: 'localhost');
   final UserRepository _userRepository =
-      UserRepository(apiBaseUrl: 'localhost');
+      UserRepository(cache: MockCacheClient(), apiBaseUrl: 'localhost');
 
   @override
   Widget build(BuildContext context) {

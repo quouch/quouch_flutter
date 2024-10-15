@@ -14,3 +14,5 @@ class MockAuthenticationBloc
 
 class MockLoginBloc extends MockBloc<LoginEvent, LoginState>
     implements LoginBloc {}
+
+class MockCacheClient extends Mock implements CacheClient {}
