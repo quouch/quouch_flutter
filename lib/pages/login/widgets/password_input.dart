@@ -12,7 +12,7 @@ class PasswordInput extends StatefulWidget {
 
 class _PasswordInputState extends State<PasswordInput> {
   final textFieldFocusNode = FocusNode();
-  bool _obscured = false;
+  bool _obscured = true;
 
   void _toggleObscured() {
     setState(() {
