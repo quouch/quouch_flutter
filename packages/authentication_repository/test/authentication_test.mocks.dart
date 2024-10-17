@@ -3,11 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:cache/cache.dart' as _i3;
+import 'package:cache/cache.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:shared_preferences/shared_preferences.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,9 +21,9 @@ import 'package:shared_preferences/shared_preferences.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeSharedPreferencesAsync_0 extends _i1.SmartFake
-    implements _i2.SharedPreferencesAsync {
-  _FakeSharedPreferencesAsync_0(
+class _FakeSecureStorageClient_0 extends _i1.SmartFake
+    implements _i2.SecureStorageClient {
+  _FakeSecureStorageClient_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -36,22 +35,22 @@ class _FakeSharedPreferencesAsync_0 extends _i1.SmartFake
 /// A class which mocks [CacheClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
+class MockCacheClient extends _i1.Mock implements _i2.CacheClient {
   @override
-  _i2.SharedPreferencesAsync get prefs => (super.noSuchMethod(
-        Invocation.getter(#prefs),
-        returnValue: _FakeSharedPreferencesAsync_0(
+  _i2.SecureStorageClient get secure => (super.noSuchMethod(
+        Invocation.getter(#secure),
+        returnValue: _FakeSecureStorageClient_0(
           this,
-          Invocation.getter(#prefs),
+          Invocation.getter(#secure),
         ),
-        returnValueForMissingStub: _FakeSharedPreferencesAsync_0(
+        returnValueForMissingStub: _FakeSecureStorageClient_0(
           this,
-          Invocation.getter(#prefs),
+          Invocation.getter(#secure),
         ),
-      ) as _i2.SharedPreferencesAsync);
+      ) as _i2.SecureStorageClient);
 
   @override
-  _i4.Future<void> writeBool({
+  _i3.Future<void> writeBool({
     required String? key,
     required bool? value,
   }) =>
@@ -64,23 +63,23 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 
   @override
-  _i4.Future<bool?> readBool({required String? key}) => (super.noSuchMethod(
+  _i3.Future<bool?> readBool({required String? key}) => (super.noSuchMethod(
         Invocation.method(
           #readBool,
           [],
           {#key: key},
         ),
-        returnValue: _i4.Future<bool?>.value(),
-        returnValueForMissingStub: _i4.Future<bool?>.value(),
-      ) as _i4.Future<bool?>);
+        returnValue: _i3.Future<bool?>.value(),
+        returnValueForMissingStub: _i3.Future<bool?>.value(),
+      ) as _i3.Future<bool?>);
 
   @override
-  _i4.Future<void> writeInt({
+  _i3.Future<void> writeInt({
     required String? key,
     required int? value,
   }) =>
@@ -93,23 +92,23 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 
   @override
-  _i4.Future<int?> readInt({required String? key}) => (super.noSuchMethod(
+  _i3.Future<int?> readInt({required String? key}) => (super.noSuchMethod(
         Invocation.method(
           #readInt,
           [],
           {#key: key},
         ),
-        returnValue: _i4.Future<int?>.value(),
-        returnValueForMissingStub: _i4.Future<int?>.value(),
-      ) as _i4.Future<int?>);
+        returnValue: _i3.Future<int?>.value(),
+        returnValueForMissingStub: _i3.Future<int?>.value(),
+      ) as _i3.Future<int?>);
 
   @override
-  _i4.Future<void> writeString({
+  _i3.Future<void> writeString({
     required String? key,
     required String? value,
   }) =>
@@ -122,12 +121,12 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 
   @override
-  _i4.Future<void> writeObject({
+  _i3.Future<void> writeObject({
     required String? key,
     required Map<String, dynamic>? value,
   }) =>
@@ -140,12 +139,12 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 
   @override
-  _i4.Future<String?>? readString({required String? key}) =>
+  _i3.Future<String?>? readString({required String? key}) =>
       (super.noSuchMethod(
         Invocation.method(
           #readString,
@@ -153,10 +152,10 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
           {#key: key},
         ),
         returnValueForMissingStub: null,
-      ) as _i4.Future<String?>?);
+      ) as _i3.Future<String?>?);
 
   @override
-  _i4.Future<Map<String, dynamic>> readObject({required String? key}) =>
+  _i3.Future<Map<String, dynamic>> readObject({required String? key}) =>
       (super.noSuchMethod(
         Invocation.method(
           #readObject,
@@ -164,19 +163,50 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
           {#key: key},
         ),
         returnValue:
-            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
         returnValueForMissingStub:
-            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i4.Future<Map<String, dynamic>>);
+            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i3.Future<Map<String, dynamic>>);
 
   @override
-  _i4.Future<void> remove({required String? key}) => (super.noSuchMethod(
+  _i3.Future<void> remove({required String? key}) => (super.noSuchMethod(
         Invocation.method(
           #remove,
           [],
           {#key: key},
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+
+  @override
+  _i3.Future<void> writeJwt({required String? value}) => (super.noSuchMethod(
+        Invocation.method(
+          #writeJwt,
+          [],
+          {#value: value},
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+
+  @override
+  _i3.Future<String?> readJwt() => (super.noSuchMethod(
+        Invocation.method(
+          #readJwt,
+          [],
+        ),
+        returnValue: _i3.Future<String?>.value(),
+        returnValueForMissingStub: _i3.Future<String?>.value(),
+      ) as _i3.Future<String?>);
+
+  @override
+  _i3.Future<void> deleteJwt() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteJwt,
+          [],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

@@ -87,6 +87,7 @@ class AuthenticationRepository {
           data: body, options: _options);
       var userData = response.data?['data'];
       _saveUser(user: User.fromJson(userData));
+      extractAndSaveJwtToken(response);
       _controller.add(AuthenticationStatus.authenticated);
     } on DioException catch (e) {
       // The request was made and the server responded with a status code
@@ -107,4 +108,16 @@ class AuthenticationRepository {
   }
 
   void dispose() => _controller.close();
+
+  @visibleForTesting
+  void extractAndSaveJwtToken(Response response) {
+    var jwtToken = response.headers.map['authorization']?.first;
+    if (jwtToken != null) {
+      _saveJwtToken(jwtToken: jwtToken);
+    }
+  }
+
+  Future<void> _saveJwtToken({required String jwtToken}) async {
+    cache.writeJwt(value: jwtToken);
+  }
 }

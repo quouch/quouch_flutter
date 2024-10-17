@@ -2,11 +2,17 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../cache.dart';
+
 class CacheClient {
-  CacheClient({SharedPreferencesAsync? prefs})
-      : prefs = prefs ?? SharedPreferencesAsync();
+  CacheClient({SharedPreferencesAsync? prefs, SecureStorageClient? secure})
+      : prefs = prefs ?? SharedPreferencesAsync(),
+        secure = secure ?? SecureStorageClient();
 
   final SharedPreferencesAsync prefs;
+  final SecureStorageClient secure;
+
+  final _jwtKey = 'jwt';
 
   Future<void> writeBool({required String key, required bool value}) {
     return prefs.setBool(key, value);
@@ -54,5 +60,17 @@ class CacheClient {
 
   Future<void> remove({required String key}) {
     return prefs.remove(key);
+  }
+
+  Future<void> writeJwt({required String value}) async {
+    await secure.write(key: _jwtKey, value: value);
+  }
+
+  Future<String?> readJwt() async {
+    return await secure.read(key: _jwtKey);
+  }
+
+  Future<void> deleteJwt() async {
+    await secure.delete(key: _jwtKey);
   }
 }

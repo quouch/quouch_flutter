@@ -127,5 +127,25 @@ void main() {
       expect(await authenticationRepository.status.first,
           AuthenticationStatus.unauthenticated);
     });
+
+    test('extractAndSaveJwtToken saves the token in the cache', () async {
+      var token = 'Bearer eySome-token';
+      var cookie = '_quouch_session=str; path=/; HttpOnly; SameSite=Lax';
+      Headers headers = Headers.fromMap({
+        "cache-control": ["max-age=0, private, must-revalidate"],
+        "set-cookie": [cookie],
+        "transfer-encoding": ["chunked"],
+        "vary": ["Origin"],
+        "referrer-policy": ["strict-origin-when-cross-origin"],
+        "authorization": [token]
+      });
+      var response = Response(
+        data: {'token': token},
+        requestOptions: RequestOptions(path: '/login'),
+        headers: headers,
+      );
+      authenticationRepository.extractAndSaveJwtToken(response);
+      verify(mockCacheClient.writeJwt(value: token)).called(1);
+    });
   });
 }

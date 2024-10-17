@@ -6,8 +6,6 @@ class SecureStorageClient {
 
   final FlutterSecureStorage storage;
 
-  final _jwtKey = 'jwt';
-
   Future<void> write({required String key, required String value}) async {
     await storage.write(key: key, value: value);
   }
@@ -20,15 +18,4 @@ class SecureStorageClient {
     await storage.delete(key: key);
   }
 
-  Future<void> writeJwt({required String value}) async {
-    await write(key: _jwtKey, value: value);
-  }
-
-  Future<String?> readJwt() async {
-    return await read(key: _jwtKey);
-  }
-
-  Future<void> deleteJwt() async {
-    await delete(key: _jwtKey);
-  }
 }
