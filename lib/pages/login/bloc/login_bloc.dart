@@ -27,6 +27,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final username = Username.dirty(event.username);
     emit(
       state.copyWith(
+        status: FormzSubmissionStatus.initial,
         username: username,
         isValid: Formz.validate([state.password, username]),
       ),
@@ -40,6 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final password = Password.dirty(event.password);
     emit(
       state.copyWith(
+        status: FormzSubmissionStatus.initial,
         password: password,
         isValid: Formz.validate([password, state.username]),
       ),
@@ -50,6 +52,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginSubmitted event,
     Emitter<LoginState> emit,
   ) async {
+    print('LoginSubmitted');
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
