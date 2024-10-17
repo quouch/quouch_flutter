@@ -54,6 +54,7 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) {
     _authenticationRepository.logOut();
+    emit(const AuthenticationState.unauthenticated());
   }
 
   Future<User?> _tryGetUser() async {

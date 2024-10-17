@@ -11,13 +11,18 @@ dependencies:
   cache:
     path: ../cache
 
-  http: ^1.2.2
+  # network
+  dio: ^5.7.0
+
   equatable: ^2.0.5
   flutter:
     sdk: flutter
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  plugin_platform_interface: ^2.1.7
-  mockito: ^5.4.4
+  plugin_platform_interface: ^2.1.8
   build_runner: ^2.4.13
+
+  #mock
+  mockito: ^5.4.4
+  http_mock_adapter: ^0.6.1

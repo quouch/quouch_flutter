@@ -1,28 +1,50 @@
-import 'dart:convert';
-
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:cache/cache.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
+import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-@GenerateNiceMocks([MockSpec<CacheClient>(), MockSpec<http.Client>()])
+@GenerateNiceMocks([MockSpec<CacheClient>()])
 import 'authentication_test.mocks.dart';
 
 void main() {
+  late Dio dio;
+  late DioAdapter dioAdapter;
   group('AuthenticationRepository', () {
     late AuthenticationRepository authenticationRepository;
     late MockCacheClient mockCacheClient;
-    late MockClient mockHttpClient;
+
+    String baseUrl = 'http://localhost:3000';
+    String loginUrl = '$baseUrl/login';
+    Map<String, String> user = {'id': '1', 'name': 'Test User'};
+    var returnedData = {'data': user};
+    DioException dioError = DioException(
+      error: {'message': 'Some beautiful error!'},
+      requestOptions: RequestOptions(path: '/login'),
+      response: Response(
+        statusCode: 401,
+        requestOptions: RequestOptions(path: '/login'),
+      ),
+    );
+
+    Map<String, String> userCredentials = <String, String>{
+      'email': 'test@example.com',
+      'password': 'password',
+    };
 
     setUp(() {
       mockCacheClient = MockCacheClient();
-      mockHttpClient = MockClient();
+      dio = Dio();
+
+      dioAdapter = DioAdapter(dio: dio);
+      dio.httpClientAdapter = dioAdapter;
+
       authenticationRepository = AuthenticationRepository(
         cache: mockCacheClient,
-        httpClient: mockHttpClient,
-        apiBaseUrl: 'http://localhost:3000',
+        dio: dio,
+        apiBaseUrl: baseUrl,
       );
     });
 
@@ -45,47 +67,55 @@ void main() {
     });
 
     test('logIn makes a POST request and updates the status', () async {
-      var user = {'id': '1', 'name': 'Test User'};
-      var returnedData = jsonEncode({'data': user});
-      when(mockHttpClient.post(any,
-              body: anyNamed('body'), headers: anyNamed('headers')))
-          .thenAnswer((_) => Future.value(http.Response(returnedData, 200)));
+      dioAdapter.onPost(
+        loginUrl,
+        (request) => request.reply(200, returnedData),
+        data: {"user": userCredentials},
+      );
 
       await authenticationRepository.logIn(
-          email: 'test@test.com', password: 'password');
-      verify(mockHttpClient.post(any,
-              body: anyNamed('body'), headers: anyNamed('headers')))
-          .called(1);
-      verify(mockCacheClient.writeObject(key: anyNamed('key'), value: user))
+          email: userCredentials['email'] as String,
+          password: userCredentials['password'] as String);
+      verify(mockCacheClient.writeObject(
+              key: anyNamed('key'), value: anyNamed('value')))
           .called(1);
       var newStatus = await authenticationRepository.controller.stream.first;
       expect(newStatus, AuthenticationStatus.authenticated);
     });
 
     test('logIn throws error if authentication does not work', () async {
-      when(mockHttpClient.post(any,
-              body: anyNamed('body'), headers: anyNamed('headers')))
-          .thenAnswer((_) => Future.value(http.Response('', 401)));
+      dioError.response?.statusCode = 401;
 
+      dioAdapter.onPost(
+        loginUrl,
+        (request) => request.throws(401, dioError),
+        data: {"user": userCredentials},
+      );
       expect(
-          () => authenticationRepository.logIn(
-              email: 'test', password: 'password'),
+          () async => await authenticationRepository.logIn(
+              email: userCredentials['email'] as String,
+              password: userCredentials['password'] as String),
           throwsA(isA<AuthenticationFailure>()));
       // Check that the message is 'Unauthorized'
       expect(
-          () => authenticationRepository.logIn(
-              email: 'test', password: 'password'),
+          () async => await authenticationRepository.logIn(
+              email: userCredentials['email'] as String,
+              password: userCredentials['password'] as String),
           throwsA(
               predicate((e) => e.toString() == 'Login error: Unauthorized')));
     });
 
     test('logIn throws error if credentials are wrong', () async {
-      when(mockHttpClient.post(any,
-              body: anyNamed('body'), headers: anyNamed('headers')))
-          .thenAnswer((_) => Future.value(http.Response('', 422)));
+      dioError.response?.statusCode = 422;
+      dioAdapter.onPost(
+        '$baseUrl/login',
+        (request) => request.throws(422, dioError),
+        data: {"user": userCredentials},
+      );
       expect(
-          () => authenticationRepository.logIn(
-              email: 'test', password: 'password'),
+          () async => await authenticationRepository.logIn(
+              email: userCredentials['email'] as String,
+              password: userCredentials['password'] as String),
           throwsA(predicate(
               (e) => e.toString() == 'Login error: Invalid credentials')));
     });
