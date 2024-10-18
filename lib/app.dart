@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quouch_app/pages/pages.dart';
 import 'package:quouch_app/theme/theme.dart';
-import 'package:user_repository/user_repository.dart';
 
 import 'di/injector.dart';
 import 'flavors.dart';
@@ -35,7 +34,6 @@ class _AppState extends State<App> {
         lazy: false,
         create: (_) => AuthenticationBloc(
           authenticationRepository: getIt<AuthenticationRepository>(),
-          userRepository: getIt<UserRepository>(),
         )..add(AuthenticationSubscriptionRequested()),
         child: const AppView(),
       ),

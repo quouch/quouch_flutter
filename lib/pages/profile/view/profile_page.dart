@@ -204,9 +204,8 @@ class _UserId extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userId = context.select(
-      (AuthenticationBloc bloc) => bloc.state.user?.id,
-    );
+    // TODO: get the user id from the user repository
+    final userId = '123456';
 
     return Text('UserID: $userId');
   }
