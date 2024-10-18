@@ -5,6 +5,14 @@ import 'package:quouch_app/pages/pages.dart';
 import 'helpers/test_app.dart';
 
 void main() {
+  setUpAll(() {
+    testSetup();
+  });
+
+  tearDownAll(() {
+    testTearDown();
+  });
+
   testWidgets('tab navigation', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     Element context = await initializeWidgetForTest(tester, HomePage());

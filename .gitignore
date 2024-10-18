@@ -30,6 +30,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+**/build/
 
 # Symbolication related
 app.*.symbols
@@ -46,3 +47,6 @@ lib/generated/
 
 # Environment configuration
 .env
+
+# Coverage directory used by tools like istanbul
+coverage

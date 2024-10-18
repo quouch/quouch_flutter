@@ -1,4 +1,5 @@
 export 'app_bar_back_button.dart';
+export 'app_spacer.dart';
 export 'circular_icon_button.dart';
 export 'divider_block.dart';
 export 'large_titled_image_list_view.dart';

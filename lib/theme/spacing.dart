@@ -1,5 +1,7 @@
 part of 'app_theme.dart';
 
+enum SizeKey { xs, sm, md, lg, xl, thin, line }
+
 class AppSpacing extends ThemeExtension<AppSpacing> {
   const AppSpacing({
     this.xs = 8,
@@ -60,6 +62,25 @@ class AppSpacing extends ThemeExtension<AppSpacing> {
         return lg;
       case 'xl':
         return xl;
+    }
+  }
+
+  get(SizeKey size) {
+    switch (size) {
+      case SizeKey.xs:
+        return xs;
+      case SizeKey.sm:
+        return sm;
+      case SizeKey.md:
+        return md;
+      case SizeKey.lg:
+        return lg;
+      case SizeKey.xl:
+        return xl;
+      case SizeKey.thin:
+        return thin;
+      case SizeKey.line:
+        return line;
     }
   }
 }

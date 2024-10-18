@@ -1,5 +1,6 @@
 ide: "idea"
 app:
+  name: "Quouch"
   android:
     flavorDimensions: "flavor-type"
   ios:

@@ -19,6 +19,30 @@ flutter run
 
 This will run the app on your machine, and you will be able to see the app in action.
 
+### Running Tests
+
+To run the tests for this app, you can run the following command:
+
+```bash
+flutter test
+```
+
+This will run all the tests in the `test` directory.
+
+For testing the packages in this project, you can run the following command in each folder
+
+```bash
+dart run build_runner build 
+flutter test
+```
+
+If you want to get a coverage report for the packages, run the following command:
+
+```bash
+sh test_with_coverage_report.sh -p <package_name>
+```
+
+
 ### Translations
 
 We're using internalization

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quouch_app/pages/pages.dart';
+import 'package:quouch_app/pages/profile/cubit/profile_cubit.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:user_repository/user_repository.dart';
 
+import 'di/injector.dart';
 import 'flavors.dart';
 
 class App extends StatefulWidget {
@@ -16,32 +18,39 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  late final AuthenticationRepository _authenticationRepository;
-  late final UserRepository _userRepository;
-
   @override
   void initState() {
     super.initState();
-    _authenticationRepository = AuthenticationRepository();
-    _userRepository = UserRepository();
   }
 
   @override
   void dispose() {
-    _authenticationRepository.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
-      child: BlocProvider(
-        lazy: false,
-        create: (_) => AuthenticationBloc(
-          authenticationRepository: _authenticationRepository,
-          userRepository: _userRepository,
-        )..add(AuthenticationSubscriptionRequested()),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<AuthenticationRepository>(
+          create: (BuildContext context) => getIt<AuthenticationRepository>(),
+        ),
+        RepositoryProvider<UserRepository>(
+          create: (BuildContext context) => getIt<UserRepository>(),
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AuthenticationBloc>(
+              lazy: false,
+              create: (context) => AuthenticationBloc(
+                  authenticationRepository: getIt<AuthenticationRepository>())
+                ..add(AuthenticationSubscriptionRequested())),
+          BlocProvider<ProfileCubit>(
+            lazy: false,
+            create: (context) => ProfileCubit(getIt<UserRepository>()),
+          ),
+        ],
         child: const AppView(),
       ),
     );
