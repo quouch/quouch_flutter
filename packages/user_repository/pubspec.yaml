@@ -11,8 +11,10 @@ dependencies:
   cache:
     path: ../cache
   equatable: ^2.0.5
-  uuid: ^4.5.1
-  json_serializable: ^6.8.0
+
+  # serialization
+  built_value: ^8.9.2
+  built_collection: ^5.1.1
 
   # network
   dio: ^5.7.0
@@ -22,3 +24,6 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.4.4
   build_runner: ^2.4.13
+  built_value_generator: ^8.9.2
+  build_test: any
+  build_web_compilers: any

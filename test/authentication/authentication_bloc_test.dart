@@ -8,6 +8,7 @@ import 'package:quouch_app/pages/authentication/bloc/authentication_bloc.dart';
 import 'package:test/test.dart';
 import 'package:user_repository/user_repository.dart';
 
+import '../helpers/factories/user.dart';
 import '../helpers/mocked_repositories.mocks.dart';
 
 void main() {
@@ -58,8 +59,7 @@ void main() {
       }),
       build: () => authenticationBloc,
       act: (bloc) => bloc.add(AuthenticationSubscriptionRequested()),
-      expect: () =>
-          [AuthenticationState.authenticated(User(id: '1', name: 'Test User'))],
+      expect: () => [AuthenticationState.authenticated(generateFakeUser(1))],
     );
 
     blocTest<AuthenticationBloc, AuthenticationState>(

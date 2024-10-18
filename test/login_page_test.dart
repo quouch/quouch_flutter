@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:quouch_app/pages/login/widgets/widgets.dart';
 import 'package:quouch_app/pages/pages.dart';
-import 'package:user_repository/user_repository.dart';
 
+import 'helpers/factories/user.dart';
 import 'helpers/test_app.dart';
 
 void main() {
@@ -61,7 +61,7 @@ void main() {
       var authRepo = getIt<AuthenticationRepository>();
       when(authRepo.logIn(
               email: 'correct_username', password: 'correct_password'))
-          .thenAnswer((_) async => User(id: '1', name: 'Test User'));
+          .thenAnswer((_) async => generateFakeUser(1));
       when(authRepo.status)
           .thenAnswer((_) => Stream.value(AuthenticationStatus.authenticated));
 

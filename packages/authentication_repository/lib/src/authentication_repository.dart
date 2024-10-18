@@ -38,27 +38,29 @@ class AuthenticationRepository {
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
   Future<User> get currentUser async {
-    var user = await cache.readObject(key: userCacheKey);
-    if (user.isEmpty) {
+    try {
+      var userData = await cache.readString(key: userCacheKey);
+      var user = User.fromJsonString(userData!)!;
+      return user;
+    } catch (e) {
       return User.empty;
     }
-    return User.fromJson(user);
   }
 
   Stream<AuthenticationStatus> get status async* {
     var cachedUser = await currentUser;
-    if (cachedUser.id != '-') {
-      yield AuthenticationStatus.authenticated;
-    } else {
+    if (cachedUser.isEmpty) {
       yield AuthenticationStatus.unauthenticated;
 
       yield* _controller.stream;
+    } else {
+      yield AuthenticationStatus.authenticated;
     }
   }
 
   Future<void> _saveUser({required User user}) async {
-    var json = user.toJson();
-    cache.writeObject(key: userCacheKey, value: json);
+    var json = user.toJsonString();
+    cache.writeString(key: userCacheKey, value: json);
   }
 
   Future<void> _clearUser() async {
@@ -86,7 +88,12 @@ class AuthenticationRepository {
       var response = await _dio.post('${this.apiBaseUrl}/login',
           data: body, options: _options);
       var userData = response.data?['data'];
-      _saveUser(user: User.fromJson(userData));
+      var user = User.fromJson(userData['attributes']);
+
+      if (user == null) {
+        throw AuthenticationFailure.fromCode(500);
+      }
+      _saveUser(user: user);
       extractAndSaveJwtToken(response);
       _controller.add(AuthenticationStatus.authenticated);
     } on DioException catch (e) {

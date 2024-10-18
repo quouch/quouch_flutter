@@ -15,9 +15,10 @@ class UserRepository {
 
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
-  Future<User> get currentUser async {
-    var userData = await cache.readObject(key: userCacheKey);
-    return User.fromJson(userData);
+  Future<User?> get currentUser async {
+    var userData = await cache.readString(key: userCacheKey);
+    if (userData == null) return null;
+    return User.fromJsonString(userData);
   }
 
   Future<User?> getUser() async {

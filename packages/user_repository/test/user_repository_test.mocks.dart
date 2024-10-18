@@ -33,6 +33,17 @@ class _FakeSharedPreferencesAsync_0 extends _i1.SmartFake
         );
 }
 
+class _FakeSecureStorageClient_1 extends _i1.SmartFake
+    implements _i3.SecureStorageClient {
+  _FakeSecureStorageClient_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [CacheClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -49,6 +60,19 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
           Invocation.getter(#prefs),
         ),
       ) as _i2.SharedPreferencesAsync);
+
+  @override
+  _i3.SecureStorageClient get secure => (super.noSuchMethod(
+        Invocation.getter(#secure),
+        returnValue: _FakeSecureStorageClient_1(
+          this,
+          Invocation.getter(#secure),
+        ),
+        returnValueForMissingStub: _FakeSecureStorageClient_1(
+          this,
+          Invocation.getter(#secure),
+        ),
+      ) as _i3.SecureStorageClient);
 
   @override
   _i4.Future<void> writeBool({
@@ -175,6 +199,37 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
           #remove,
           [],
           {#key: key},
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> writeJwt({required String? value}) => (super.noSuchMethod(
+        Invocation.method(
+          #writeJwt,
+          [],
+          {#value: value},
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<String?> readJwt() => (super.noSuchMethod(
+        Invocation.method(
+          #readJwt,
+          [],
+        ),
+        returnValue: _i4.Future<String?>.value(),
+        returnValueForMissingStub: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
+
+  @override
+  _i4.Future<void> deleteJwt() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteJwt,
+          [],
         ),
         returnValue: _i4.Future<void>.value(),
         returnValueForMissingStub: _i4.Future<void>.value(),

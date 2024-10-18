@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
@@ -18,8 +21,9 @@ void main() {
 
     String baseUrl = 'http://localhost:3000';
     String loginUrl = '$baseUrl/login';
-    Map<String, String> user = {'id': '1', 'name': 'Test User'};
-    var returnedData = {'data': user};
+    File loginResponseFile = File('test_resources/login_response.json');
+    late String loginResponseData;
+
     DioException dioError = DioException(
       error: {'message': 'Some beautiful error!'},
       requestOptions: RequestOptions(path: '/login'),
@@ -33,6 +37,12 @@ void main() {
       'email': 'test@example.com',
       'password': 'password',
     };
+
+    setUpAll(() async {
+      var fileContent = await loginResponseFile.readAsString();
+      // Do this to remove the extra escape characters and line jumps
+      loginResponseData = json.encode(json.decode(fileContent));
+    });
 
     setUp(() {
       mockCacheClient = MockCacheClient();
@@ -50,8 +60,8 @@ void main() {
 
     test('returns AuthenticationStatus.unauthenticated when user is not cached',
         () async {
-      when(mockCacheClient.readObject(key: anyNamed("key")))
-          .thenAnswer((_) async => {});
+      when(mockCacheClient.readString(key: anyNamed("key")))
+          .thenAnswer((_) async => null);
 
       expect(await authenticationRepository.status.first,
           AuthenticationStatus.unauthenticated);
@@ -59,8 +69,8 @@ void main() {
 
     test('returns AuthenticationStatus.authenticated when user is cached',
         () async {
-      when(mockCacheClient.readObject(key: anyNamed('key')))
-          .thenAnswer((_) async => {'id': '1'});
+      when(mockCacheClient.readString(key: anyNamed('key')))
+          .thenAnswer((_) async => '{"id": 1}');
 
       expect(await authenticationRepository.status.first,
           AuthenticationStatus.authenticated);
@@ -69,14 +79,14 @@ void main() {
     test('logIn makes a POST request and updates the status', () async {
       dioAdapter.onPost(
         loginUrl,
-        (request) => request.reply(200, returnedData),
+        (request) => request.reply(200, jsonDecode(loginResponseData)),
         data: {"user": userCredentials},
       );
 
       await authenticationRepository.logIn(
           email: userCredentials['email'] as String,
           password: userCredentials['password'] as String);
-      verify(mockCacheClient.writeObject(
+      verify(mockCacheClient.writeString(
               key: anyNamed('key'), value: anyNamed('value')))
           .called(1);
       var newStatus = await authenticationRepository.controller.stream.first;
