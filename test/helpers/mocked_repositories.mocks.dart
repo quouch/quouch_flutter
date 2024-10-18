@@ -3,15 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i4;
 
 import 'package:authentication_repository/src/authentication_repository.dart'
     as _i8;
 import 'package:cache/cache.dart' as _i3;
+import 'package:dio/dio.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 import 'package:shared_preferences/shared_preferences.dart' as _i2;
-import 'package:user_repository/src/models/models.dart' as _i4;
+import 'package:user_repository/src/models/models.dart' as _i5;
 import 'package:user_repository/user_repository.dart' as _i6;
 
 // ignore_for_file: type=lint
@@ -38,8 +39,9 @@ class _FakeSharedPreferencesAsync_0 extends _i1.SmartFake
         );
 }
 
-class _FakeCacheClient_1 extends _i1.SmartFake implements _i3.CacheClient {
-  _FakeCacheClient_1(
+class _FakeSecureStorageClient_1 extends _i1.SmartFake
+    implements _i3.SecureStorageClient {
+  _FakeSecureStorageClient_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -48,8 +50,8 @@ class _FakeCacheClient_1 extends _i1.SmartFake implements _i3.CacheClient {
         );
 }
 
-class _FakeUser_2 extends _i1.SmartFake implements _i4.User {
-  _FakeUser_2(
+class _FakeCacheClient_2 extends _i1.SmartFake implements _i3.CacheClient {
+  _FakeCacheClient_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -59,8 +61,18 @@ class _FakeUser_2 extends _i1.SmartFake implements _i4.User {
 }
 
 class _FakeStreamController_3<T> extends _i1.SmartFake
-    implements _i5.StreamController<T> {
+    implements _i4.StreamController<T> {
   _FakeStreamController_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeUser_4 extends _i1.SmartFake implements _i5.User {
+  _FakeUser_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -87,7 +99,20 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
       ) as _i2.SharedPreferencesAsync);
 
   @override
-  _i5.Future<void> writeBool({
+  _i3.SecureStorageClient get secure => (super.noSuchMethod(
+        Invocation.getter(#secure),
+        returnValue: _FakeSecureStorageClient_1(
+          this,
+          Invocation.getter(#secure),
+        ),
+        returnValueForMissingStub: _FakeSecureStorageClient_1(
+          this,
+          Invocation.getter(#secure),
+        ),
+      ) as _i3.SecureStorageClient);
+
+  @override
+  _i4.Future<void> writeBool({
     required String? key,
     required bool? value,
   }) =>
@@ -100,23 +125,23 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i5.Future<bool?> readBool({required String? key}) => (super.noSuchMethod(
+  _i4.Future<bool?> readBool({required String? key}) => (super.noSuchMethod(
         Invocation.method(
           #readBool,
           [],
           {#key: key},
         ),
-        returnValue: _i5.Future<bool?>.value(),
-        returnValueForMissingStub: _i5.Future<bool?>.value(),
-      ) as _i5.Future<bool?>);
+        returnValue: _i4.Future<bool?>.value(),
+        returnValueForMissingStub: _i4.Future<bool?>.value(),
+      ) as _i4.Future<bool?>);
 
   @override
-  _i5.Future<void> writeInt({
+  _i4.Future<void> writeInt({
     required String? key,
     required int? value,
   }) =>
@@ -129,23 +154,23 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i5.Future<int?> readInt({required String? key}) => (super.noSuchMethod(
+  _i4.Future<int?> readInt({required String? key}) => (super.noSuchMethod(
         Invocation.method(
           #readInt,
           [],
           {#key: key},
         ),
-        returnValue: _i5.Future<int?>.value(),
-        returnValueForMissingStub: _i5.Future<int?>.value(),
-      ) as _i5.Future<int?>);
+        returnValue: _i4.Future<int?>.value(),
+        returnValueForMissingStub: _i4.Future<int?>.value(),
+      ) as _i4.Future<int?>);
 
   @override
-  _i5.Future<void> writeString({
+  _i4.Future<void> writeString({
     required String? key,
     required String? value,
   }) =>
@@ -158,12 +183,12 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i5.Future<void> writeObject({
+  _i4.Future<void> writeObject({
     required String? key,
     required Map<String, dynamic>? value,
   }) =>
@@ -176,12 +201,12 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
             #value: value,
           },
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i5.Future<String?>? readString({required String? key}) =>
+  _i4.Future<String?>? readString({required String? key}) =>
       (super.noSuchMethod(
         Invocation.method(
           #readString,
@@ -189,10 +214,10 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
           {#key: key},
         ),
         returnValueForMissingStub: null,
-      ) as _i5.Future<String?>?);
+      ) as _i4.Future<String?>?);
 
   @override
-  _i5.Future<Map<String, dynamic>> readObject({required String? key}) =>
+  _i4.Future<Map<String, dynamic>> readObject({required String? key}) =>
       (super.noSuchMethod(
         Invocation.method(
           #readObject,
@@ -200,21 +225,52 @@ class MockCacheClient extends _i1.Mock implements _i3.CacheClient {
           {#key: key},
         ),
         returnValue:
-            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
         returnValueForMissingStub:
-            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i5.Future<Map<String, dynamic>>);
+            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i4.Future<Map<String, dynamic>>);
 
   @override
-  _i5.Future<void> remove({required String? key}) => (super.noSuchMethod(
+  _i4.Future<void> remove({required String? key}) => (super.noSuchMethod(
         Invocation.method(
           #remove,
           [],
           {#key: key},
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> writeJwt({required String? value}) => (super.noSuchMethod(
+        Invocation.method(
+          #writeJwt,
+          [],
+          {#value: value},
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<String?> readJwt() => (super.noSuchMethod(
+        Invocation.method(
+          #readJwt,
+          [],
+        ),
+        returnValue: _i4.Future<String?>.value(),
+        returnValueForMissingStub: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
+
+  @override
+  _i4.Future<void> deleteJwt() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteJwt,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }
 
 /// A class which mocks [UserRepository].
@@ -237,38 +293,32 @@ class MockUserRepository extends _i1.Mock implements _i6.UserRepository {
   @override
   _i3.CacheClient get cache => (super.noSuchMethod(
         Invocation.getter(#cache),
-        returnValue: _FakeCacheClient_1(
+        returnValue: _FakeCacheClient_2(
           this,
           Invocation.getter(#cache),
         ),
-        returnValueForMissingStub: _FakeCacheClient_1(
+        returnValueForMissingStub: _FakeCacheClient_2(
           this,
           Invocation.getter(#cache),
         ),
       ) as _i3.CacheClient);
 
   @override
-  _i5.Future<_i4.User> get currentUser => (super.noSuchMethod(
+  _i4.Future<_i5.User?> get currentUser => (super.noSuchMethod(
         Invocation.getter(#currentUser),
-        returnValue: _i5.Future<_i4.User>.value(_FakeUser_2(
-          this,
-          Invocation.getter(#currentUser),
-        )),
-        returnValueForMissingStub: _i5.Future<_i4.User>.value(_FakeUser_2(
-          this,
-          Invocation.getter(#currentUser),
-        )),
-      ) as _i5.Future<_i4.User>);
+        returnValue: _i4.Future<_i5.User?>.value(),
+        returnValueForMissingStub: _i4.Future<_i5.User?>.value(),
+      ) as _i4.Future<_i5.User?>);
 
   @override
-  _i5.Future<_i4.User?> getUser() => (super.noSuchMethod(
+  _i4.Future<_i5.User?> getUser() => (super.noSuchMethod(
         Invocation.method(
           #getUser,
           [],
         ),
-        returnValue: _i5.Future<_i4.User?>.value(),
-        returnValueForMissingStub: _i5.Future<_i4.User?>.value(),
-      ) as _i5.Future<_i4.User?>);
+        returnValue: _i4.Future<_i5.User?>.value(),
+        returnValueForMissingStub: _i4.Future<_i5.User?>.value(),
+      ) as _i4.Future<_i5.User?>);
 }
 
 /// A class which mocks [AuthenticationRepository].
@@ -279,11 +329,11 @@ class MockAuthenticationRepository extends _i1.Mock
   @override
   _i3.CacheClient get cache => (super.noSuchMethod(
         Invocation.getter(#cache),
-        returnValue: _FakeCacheClient_1(
+        returnValue: _FakeCacheClient_2(
           this,
           Invocation.getter(#cache),
         ),
-        returnValueForMissingStub: _FakeCacheClient_1(
+        returnValueForMissingStub: _FakeCacheClient_2(
           this,
           Invocation.getter(#cache),
         ),
@@ -319,7 +369,7 @@ class MockAuthenticationRepository extends _i1.Mock
       );
 
   @override
-  _i5.StreamController<_i8.AuthenticationStatus> get controller =>
+  _i4.StreamController<_i8.AuthenticationStatus> get controller =>
       (super.noSuchMethod(
         Invocation.getter(#controller),
         returnValue: _FakeStreamController_3<_i8.AuthenticationStatus>(
@@ -331,30 +381,30 @@ class MockAuthenticationRepository extends _i1.Mock
           this,
           Invocation.getter(#controller),
         ),
-      ) as _i5.StreamController<_i8.AuthenticationStatus>);
+      ) as _i4.StreamController<_i8.AuthenticationStatus>);
 
   @override
-  _i5.Future<_i4.User> get currentUser => (super.noSuchMethod(
+  _i4.Future<_i5.User> get currentUser => (super.noSuchMethod(
         Invocation.getter(#currentUser),
-        returnValue: _i5.Future<_i4.User>.value(_FakeUser_2(
+        returnValue: _i4.Future<_i5.User>.value(_FakeUser_4(
           this,
           Invocation.getter(#currentUser),
         )),
-        returnValueForMissingStub: _i5.Future<_i4.User>.value(_FakeUser_2(
+        returnValueForMissingStub: _i4.Future<_i5.User>.value(_FakeUser_4(
           this,
           Invocation.getter(#currentUser),
         )),
-      ) as _i5.Future<_i4.User>);
+      ) as _i4.Future<_i5.User>);
 
   @override
-  _i5.Stream<_i8.AuthenticationStatus> get status => (super.noSuchMethod(
+  _i4.Stream<_i8.AuthenticationStatus> get status => (super.noSuchMethod(
         Invocation.getter(#status),
-        returnValue: _i5.Stream<_i8.AuthenticationStatus>.empty(),
-        returnValueForMissingStub: _i5.Stream<_i8.AuthenticationStatus>.empty(),
-      ) as _i5.Stream<_i8.AuthenticationStatus>);
+        returnValue: _i4.Stream<_i8.AuthenticationStatus>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i8.AuthenticationStatus>.empty(),
+      ) as _i4.Stream<_i8.AuthenticationStatus>);
 
   @override
-  _i5.Future<void> logIn({
+  _i4.Future<void> logIn({
     required String? email,
     required String? password,
   }) =>
@@ -367,9 +417,9 @@ class MockAuthenticationRepository extends _i1.Mock
             #password: password,
           },
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
   void logOut() => super.noSuchMethod(
@@ -385,6 +435,16 @@ class MockAuthenticationRepository extends _i1.Mock
         Invocation.method(
           #dispose,
           [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void extractAndSaveJwtToken(_i9.Response<dynamic>? response) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #extractAndSaveJwtToken,
+          [response],
         ),
         returnValueForMissingStub: null,
       );

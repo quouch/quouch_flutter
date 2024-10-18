@@ -6,9 +6,7 @@ import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:mockito/mockito.dart';
 import 'package:quouch_app/pages/authentication/bloc/authentication_bloc.dart';
 import 'package:test/test.dart';
-import 'package:user_repository/user_repository.dart';
 
-import '../helpers/factories/user.dart';
 import '../helpers/mocked_repositories.mocks.dart';
 
 void main() {
@@ -16,7 +14,6 @@ void main() {
 
   group('AuthenticationBloc Success Scenarios', () {
     AuthenticationRepository authenticationRepository;
-    UserRepository userRepository;
     late AuthenticationBloc authenticationBloc;
     late Dio dio;
     late DioAdapter dioAdapter;
@@ -29,12 +26,10 @@ void main() {
       dioAdapter = DioAdapter(dio: dio);
       dio.httpClientAdapter = dioAdapter;
       cache = MockCacheClient();
-      userRepository = UserRepository(cache: cache, apiBaseUrl: baseUrl);
       authenticationRepository =
           AuthenticationRepository(cache: cache, apiBaseUrl: baseUrl, dio: dio);
       authenticationBloc = AuthenticationBloc(
         authenticationRepository: authenticationRepository,
-        userRepository: userRepository,
       );
     });
 
@@ -54,12 +49,12 @@ void main() {
     blocTest<AuthenticationBloc, AuthenticationState>(
       'When data is not empty',
       setUp: (() {
-        when(cache.readObject(key: anyNamed('key')))
-            .thenAnswer((_) async => {'id': '1', 'name': 'Test User'});
+        when(cache.readString(key: anyNamed('key')))
+            .thenAnswer((_) async => '{"id": 1}');
       }),
       build: () => authenticationBloc,
       act: (bloc) => bloc.add(AuthenticationSubscriptionRequested()),
-      expect: () => [AuthenticationState.authenticated(generateFakeUser(1))],
+      expect: () => [AuthenticationState.authenticated()],
     );
 
     blocTest<AuthenticationBloc, AuthenticationState>(

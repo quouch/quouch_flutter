@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quouch_app/pages/pages.dart';
+import 'package:quouch_app/pages/profile/cubit/profile_cubit.dart';
 import 'package:quouch_app/theme/theme.dart';
+import 'package:user_repository/user_repository.dart';
 
 import 'di/injector.dart';
 import 'flavors.dart';
@@ -28,13 +30,27 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: getIt<AuthenticationRepository>(),
-      child: BlocProvider(
-        lazy: false,
-        create: (_) => AuthenticationBloc(
-          authenticationRepository: getIt<AuthenticationRepository>(),
-        )..add(AuthenticationSubscriptionRequested()),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<AuthenticationRepository>(
+          create: (BuildContext context) => getIt<AuthenticationRepository>(),
+        ),
+        RepositoryProvider<UserRepository>(
+          create: (BuildContext context) => getIt<UserRepository>(),
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AuthenticationBloc>(
+              lazy: false,
+              create: (context) => AuthenticationBloc(
+                  authenticationRepository: getIt<AuthenticationRepository>())
+                ..add(AuthenticationSubscriptionRequested())),
+          BlocProvider<ProfileCubit>(
+            lazy: false,
+            create: (context) => ProfileCubit(getIt<UserRepository>()),
+          ),
+        ],
         child: const AppView(),
       ),
     );

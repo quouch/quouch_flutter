@@ -9,6 +9,7 @@ import 'package:get_it/get_it.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:quouch_app/main.dart';
 import 'package:quouch_app/pages/authentication/authentication.dart';
+import 'package:quouch_app/pages/profile/cubit/profile_cubit.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -19,7 +20,8 @@ part 'initialize_widget.dart';
 final getIt = GetIt.instance;
 
 void testSetup() async {
-  AuthenticationRepository authenticationRepository = MockAuthenticationRepository();
+  AuthenticationRepository authenticationRepository =
+      MockAuthenticationRepository();
   UserRepository userRepository = MockUserRepository();
   CacheClient cacheClient = MockCacheClient();
   Dio dio = Dio();
@@ -41,20 +43,33 @@ class TestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initCloudinary();
-    return RepositoryProvider.value(
-      value: getIt<AuthenticationRepository>(),
-      child: BlocProvider(
-          lazy: false,
-          create: (_) => AuthenticationBloc(
-                authenticationRepository: getIt<AuthenticationRepository>(),
-                userRepository: getIt<UserRepository>(),
-              )..add(AuthenticationSubscriptionRequested()),
-          child: MaterialApp(
-            home: home,
-            theme: AppThemeData.lightThemeData,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-          )),
-    );
+    return MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider<AuthenticationRepository>(
+            create: (BuildContext context) => getIt<AuthenticationRepository>(),
+          ),
+          RepositoryProvider<UserRepository>(
+            create: (BuildContext context) => getIt<UserRepository>(),
+          ),
+        ],
+        child: MultiBlocProvider(
+            providers: [
+              BlocProvider<AuthenticationBloc>(
+                  lazy: false,
+                  create: (context) => AuthenticationBloc(
+                      authenticationRepository:
+                          getIt<AuthenticationRepository>())
+                    ..add(AuthenticationSubscriptionRequested())),
+              BlocProvider<ProfileCubit>(
+                lazy: false,
+                create: (context) => ProfileCubit(getIt<UserRepository>()),
+              ),
+            ],
+            child: MaterialApp(
+              home: home,
+              theme: AppThemeData.lightThemeData,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+            )));
   }
 }
