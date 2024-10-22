@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quouch_app/mocks/users.dart';
 import 'package:quouch_app/pages/authentication/authentication.dart';
+import 'package:quouch_app/pages/profile/cubit/profile_cubit.dart';
 import 'package:quouch_app/theme/theme.dart';
 import 'package:quouch_app/widgets/widgets.dart';
 
@@ -13,6 +14,8 @@ class ProfilePage extends StatelessWidget {
     var profile = testProfile;
     var theme = Theme.of(context);
     final spacing = theme.extension<AppSpacing>()!;
+    context.read<ProfileCubit>().fetchUser();
+
     return Scaffold(
         body: CustomScrollView(
       slivers: [
@@ -114,7 +117,7 @@ class ProfilePage extends StatelessWidget {
                 DividerBlock(),
                 ProfileListTile(
                   label: 'Log out',
-                  labelColor: Colors.teal,
+                  labelColor: AppColors.error,
                   onTap: () {
                     context
                         .read<AuthenticationBloc>()
@@ -204,10 +207,17 @@ class _UserId extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userId = context.select(
-      (AuthenticationBloc bloc) => bloc.state.user.id,
+    return BlocBuilder<ProfileCubit, ProfileState>(
+      builder: (context, state) {
+        return switch (state.status) {
+          ProfileStatus.initial => const Text('Loading user...'),
+          ProfileStatus.loading => const Text('Loading user...'),
+          ProfileStatus.failure => const Text('Failed to load user'),
+          ProfileStatus.success => state.user != null
+              ? Text('UserID: ${state.user!.id}')
+              : const Text('No user'),
+        };
+      },
     );
-
-    return Text('UserID: $userId');
   }
 }

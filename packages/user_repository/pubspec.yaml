@@ -6,5 +6,24 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  equatable: ^2.0.0
-  uuid: ^3.0.0
+  flutter:
+    sdk: flutter
+  cache:
+    path: ../cache
+  equatable: ^2.0.5
+
+  # serialization
+  built_value: ^8.9.2
+  built_collection: ^5.1.1
+
+  # network
+  dio: ^5.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.4.4
+  build_runner: ^2.4.13
+  built_value_generator: ^8.9.2
+  build_test: any
+  build_web_compilers: any

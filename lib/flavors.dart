@@ -26,7 +26,7 @@ class F {
       case Flavor.prod:
         return 'https://quouch-app.com/api/v1';
       default:
-        return 'https://localhost:3000/api/v1';
+        return 'http://localhost:3000/api/v1';
     }
   }
 }

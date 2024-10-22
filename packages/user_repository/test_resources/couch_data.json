@@ -1,0 +1,47 @@
+{
+  "id": 10,
+  "facilities": [
+    {
+      "id": 1,
+      "name": "couch"
+    }
+  ],
+  "user_id": 1,
+  "capacity": 1,
+  "active": true,
+  "rating": 0.0,
+  "user": {
+    "id": 1,
+    "characteristics": [
+      {
+        "id": 1,
+        "name": "Queer"
+      },
+      {
+        "id": 2,
+        "name": "Non-smoker"
+      },
+      {
+        "id": 3,
+        "name": "Vaccinated"
+      }
+    ],
+    "created_at": "2024-10-18T09:43:57.883Z",
+    "updated_at": "2024-10-18T09:43:57.904Z",
+    "email": "julie@collins.test",
+    "first_name": "Oscar",
+    "last_name": "Goldner",
+    "date_of_birth": "1999-10-18T00:00:00.000Z",
+    "age": 25,
+    "summary": "Before they sold out fanny pack cronut fashion axe wes ande.",
+    "city": "Test city",
+    "country": "Senegal",
+    "address": "Rue de Commerce, 18524, Dakar, Senegal",
+    "zipcode": "18524",
+    "offers_couch": false,
+    "offers_hang_out": false,
+    "offers_co_work": true,
+    "travelling": false,
+    "photo": "https://avatar.png"
+  }
+}

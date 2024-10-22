@@ -1,0 +1,34 @@
+{
+  "id": 1,
+  "characteristics": [
+    {
+      "id": 1,
+      "name": "Queer"
+    },
+    {
+      "id": 1,
+      "name": "Queer"
+    },
+    {
+      "id": 2,
+      "name": "Non-smoker"
+    }
+  ],
+  "created_at": "2024-10-18T07:47:43.952Z",
+  "updated_at": "2024-10-18T07:47:43.967Z",
+  "email": "mreynolds@verse.com",
+  "first_name": "Malcolm",
+  "last_name": "Reynolds",
+  "date_of_birth": "1999-10-18T00:00:00.000Z",
+  "age": 25,
+  "summary": "Asymmetrical retro viral kombucha. Pickled shabby chic echo.",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "10 Downing St, SW1A 2AA, London, United Kingdom",
+  "zipcode": "SW1A 2AA",
+  "offers_couch": false,
+  "offers_hang_out": false,
+  "offers_co_work": true,
+  "travelling": false,
+  "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjMnBzWm5odmRtdHdibXRsWVhkdGJHazNjM3A1YzNjNGVXRnFjQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTE4VDA3OjUyOjQzLjk5NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--186ba231b0c2abfe8f6eebeac2dd13f3cba7d7b9/avatar.png"
+}
