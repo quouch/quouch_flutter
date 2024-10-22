@@ -1,0 +1,78 @@
+{
+  "data": {
+    "id": "1001",
+    "type": "couch",
+    "attributes": {
+      "id": 1,
+      "user_id": 1,
+      "capacity": 1,
+      "active": true,
+      "rating": 0.0,
+      "user": {
+        "id": 1001,
+        "created_at": "2024-10-22T09:14:01.191Z",
+        "updated_at": "2024-10-22T09:14:01.212Z",
+        "email": "aimee_zemlak@koss-hickle.test",
+        "first_name": "Maria",
+        "last_name": "Lindgren",
+        "date_of_birth": "1999-10-22",
+        "summary": "Kickstarter put a bird on it pour-over pork belly yr crucif.",
+        "city": "Test city",
+        "country": "Italy",
+        "zipcode": "00184",
+        "address": "Piazza del Colosseo 1, 00184, Rome, Italy",
+        "offers_couch": false,
+        "offers_hang_out": false,
+        "offers_co_work": true,
+        "travelling": false,
+        "age": 25,
+        "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNalZ5TTNGeU1qaGthWEV3Y1dFeWVtOW1aWGhrWkRSdWVEUjBNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjE5OjAxLjI1OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--368cb705c24e4f62f4d74dd3f7d363e08a4e50ff/avatar.png",
+        "characteristics": [
+          {
+            "id": 1,
+            "name": "Queer"
+          },
+          {
+            "id": 2,
+            "name": "Non-smoker"
+          },
+          {
+            "id": 2,
+            "name": "Non-smoker"
+          }
+        ]
+      },
+      "facilities": [
+        {
+          "id": 1,
+          "name": "couch"
+        }
+      ]
+    },
+    "relationships": {
+      "user": {
+        "data": {
+          "id": "1001",
+          "type": "user"
+        }
+      },
+      "facilities": {
+        "data": [
+          {
+            "id": "1",
+            "type": "facility"
+          }
+        ]
+      },
+      "bookings": {
+        "data": []
+      },
+      "reviews": {
+        "data": []
+      }
+    }
+  },
+  "links": {
+    "self": "http://www.example.com/api/v1/couches/1001"
+  }
+}

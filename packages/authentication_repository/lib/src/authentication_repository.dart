@@ -65,6 +65,7 @@ class AuthenticationRepository {
 
   Future<void> _clearUser() async {
     cache.remove(key: userCacheKey);
+    cache.deleteJwt();
   }
 
   get _headers {

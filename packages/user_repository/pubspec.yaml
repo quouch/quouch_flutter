@@ -22,8 +22,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.4
   build_runner: ^2.4.13
   built_value_generator: ^8.9.2
   build_test: any
   build_web_compilers: any
+
+  #mock
+  mockito: ^5.4.4
+  http_mock_adapter: ^0.6.1

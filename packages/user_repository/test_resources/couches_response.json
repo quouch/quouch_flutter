@@ -1,0 +1,962 @@
+{
+  "data": [
+    {
+      "id": "0",
+      "type": "couch",
+      "attributes": {
+        "id": 0,
+        "user_id": 0,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 0,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "jaime@ryan.test",
+          "first_name": "Ben",
+          "last_name": "Koss",
+          "date_of_birth": "1999-10-22",
+          "summary": "Craft beer chia kitsch pbr\u0026b selfies chambray. Bicycle righ.",
+          "city": "New Malvinamouth",
+          "country": "Gabon",
+          "zipcode": "52659",
+          "address": "61783 Rubi Causeway, Lake Faustina, KY 47099-3325",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjcwOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--624082444be1d57bd9ce6ed54855ae9224c206df/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 2,
+              "name": "Non-smoker"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "0",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "4",
+      "type": "couch",
+      "attributes": {
+        "id": 4,
+        "user_id": 4,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 4,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "lena_braun@fadel.test",
+          "first_name": "Melida",
+          "last_name": "Bednar",
+          "date_of_birth": "1999-10-22",
+          "summary": "Listicle offal blog. Mumblecore wes anderson hashtag. Squid.",
+          "city": "North Rodrick",
+          "country": "Israel",
+          "zipcode": "28302-9237",
+          "address": "681 Boyer Estates, South Oliviachester, FL 76170-6072",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjcxOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--1789ec976bd94a7437ef373a5effce365851ea08/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 2,
+              "name": "Non-smoker"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "4",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": [
+            {
+              "id": "0",
+              "type": "booking"
+            },
+            {
+              "id": "2",
+              "type": "booking"
+            },
+            {
+              "id": "10",
+              "type": "booking"
+            }
+          ]
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "11",
+      "type": "couch",
+      "attributes": {
+        "id": 11,
+        "user_id": 11,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 11,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "cristobal@nikolaus-pollich.test",
+          "first_name": "Janene",
+          "last_name": "Pagac",
+          "date_of_birth": "1999-10-22",
+          "summary": "Hella fashion axe yr portland squid sriracha tacos photo bo.",
+          "city": "West Donald",
+          "country": "Bahamas",
+          "zipcode": "31904-6388",
+          "address": "554 Grady Street, Port Barbarahaven, WY 12287-0008",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjcyM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--89b8bdfaa2c08dae7283865f9fa926d4c015e519/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "11",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "8",
+      "type": "couch",
+      "attributes": {
+        "id": 8,
+        "user_id": 8,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 8,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "marion_skiles@hagenes.example",
+          "first_name": "Richie",
+          "last_name": "Hilpert",
+          "date_of_birth": "1999-10-22",
+          "summary": "Church-key viral bitters taxidermy freegan. Hashtag keytar .",
+          "city": "North Eldridgefurt",
+          "country": "Cameroon",
+          "zipcode": "60190-6471",
+          "address": "Suite 438 214 Gottlieb Inlet, Auerland, ID 74304-4208",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjcyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--0cbc448993682a512551827fa3b9cbd55d7392a8/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "8",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "12",
+      "type": "couch",
+      "attributes": {
+        "id": 12,
+        "user_id": 12,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 12,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "carlos@parker.test",
+          "first_name": "Salley",
+          "last_name": "Breitenberg",
+          "date_of_birth": "1999-10-22",
+          "summary": "Goth franzen plaid waistcoat tote bag. Deep v taxidermy org.",
+          "city": "North Andrewmouth",
+          "country": "Cyprus",
+          "zipcode": "55183-2475",
+          "address": "44025 Lubowitz Path, Lake Becky, AZ 10609",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjczMVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--f29b53fd27798017f48cd0a7973925c56af481bb/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "12",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "10",
+      "type": "couch",
+      "attributes": {
+        "id": 10,
+        "user_id": 10,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 10,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "mac@klein.example",
+          "first_name": "Eleonore",
+          "last_name": "Koepp",
+          "date_of_birth": "1999-10-22",
+          "summary": "Squid helvetica biodiesel kinfolk xoxo drinking schlitz por.",
+          "city": "North Norbert",
+          "country": "Cyprus",
+          "zipcode": "17009-0000",
+          "address": "Apt. 850 74387 Glory Rapid, East Arliemouth, MN 37510",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjczNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2295667234bb23077a537ba6cb6e3b79214ee777/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "10",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "3",
+      "type": "couch",
+      "attributes": {
+        "id": 3,
+        "user_id": 3,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 3,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "floy@hoeger.test",
+          "first_name": "Humberto",
+          "last_name": "Haag",
+          "date_of_birth": "1999-10-22",
+          "summary": "Bicycle rights skateboard deep v retro thundercats. Neutra .",
+          "city": "Gutkowskiberg",
+          "country": "Gibraltar",
+          "zipcode": "11760",
+          "address": "Suite 509 647 Kuhic Shore, Forestchester, WA 32730-7438",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0LjczOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e6a591b7e58ca60d6684e990f6dbbd57da6ce846/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 2,
+              "name": "Non-smoker"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "3",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "couch",
+      "attributes": {
+        "id": 2,
+        "user_id": 2,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 2,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "simone_bednar@oconner.test",
+          "first_name": "Roy",
+          "last_name": "Zulauf",
+          "date_of_birth": "1999-10-22",
+          "summary": "Tacos kinfolk vinegar mixtape blog banh mi meggings humbleb.",
+          "city": "East Antonia",
+          "country": "Hong Kong",
+          "zipcode": "02364-8185",
+          "address": "Suite 246 6930 Joann Station, Lake Hollie, NC 71586-8079",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc0MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--1e12e4d036520659008e3b7f93a4376b45ed4286/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 2,
+              "name": "Non-smoker"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "2",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "1",
+      "type": "couch",
+      "attributes": {
+        "id": 1,
+        "user_id": 1,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 1,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "kris@spinka-mraz.example",
+          "first_name": "Alan",
+          "last_name": "Spinka",
+          "date_of_birth": "1999-10-22",
+          "summary": "Fingerstache vinyl kale chips. Roof drinking pork belly tac.",
+          "city": "West Auroreburgh",
+          "country": "Marshall Islands",
+          "zipcode": "56437-4954",
+          "address": "Suite 728 736 Emerson Mills, Stoltenberghaven, MT 01250",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc0NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--3e136a292d7984ccfdb5fad413379bda8eabbe78/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 2,
+              "name": "Non-smoker"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "1",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "6",
+      "type": "couch",
+      "attributes": {
+        "id": 6,
+        "user_id": 6,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 6,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "racheal@ullrich.example",
+          "first_name": "Stanley",
+          "last_name": "Pfeffer",
+          "date_of_birth": "1999-10-22",
+          "summary": "Photo booth taxidermy bitters put a bird on it direct trade.",
+          "city": "Port Stormy",
+          "country": "Eritrea",
+          "zipcode": "42897",
+          "address": "3937 Yasmine Shoal, Port Elnora, SC 62355",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--042c8e4722182b176cfaaec34cc0e6bffdf21a2c/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "6",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": [
+            {
+              "id": "1",
+              "type": "booking"
+            },
+            {
+              "id": "4",
+              "type": "booking"
+            },
+            {
+              "id": "5",
+              "type": "booking"
+            },
+            {
+              "id": "7",
+              "type": "booking"
+            },
+            {
+              "id": "8",
+              "type": "booking"
+            },
+            {
+              "id": "12",
+              "type": "booking"
+            }
+          ]
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "14",
+      "type": "couch",
+      "attributes": {
+        "id": 14,
+        "user_id": 14,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 14,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "kayce@windler.test",
+          "first_name": "Franklin",
+          "last_name": "Howell",
+          "date_of_birth": "1999-10-22",
+          "summary": "Microdosing narwhal fixie ethical vinyl heirloom 90's five .",
+          "city": "Lake Laurene",
+          "country": "Croatia",
+          "zipcode": "69619-2760",
+          "address": "3545 Dwana Burg, Teresehaven, WA 47964",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc1NFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--4714cd0923282c20d95dcbdb48ed920fd33c85fe/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "14",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "7",
+      "type": "couch",
+      "attributes": {
+        "id": 7,
+        "user_id": 7,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 7,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "ira@damore.example",
+          "first_name": "Taylor",
+          "last_name": "Beer",
+          "date_of_birth": "1999-10-22",
+          "summary": "+1 hashtag hella cliche forage. Artisan retro before they s.",
+          "city": "Port Hyunland",
+          "country": "Spain",
+          "zipcode": "93591",
+          "address": "Apt. 420 7981 Van Isle, South Douglas, MI 17807-8347",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc1OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e76e917244120d362c5730a9b92071aba08dadec/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "7",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "5",
+      "type": "couch",
+      "attributes": {
+        "id": 5,
+        "user_id": 5,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 5,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "doretta.schiller@gulgowski.test",
+          "first_name": "Tuan",
+          "last_name": "Parker",
+          "date_of_birth": "1999-10-22",
+          "summary": "Deep v gentrify carry normcore put a bird on it blue bottle.",
+          "city": "New Analisaberg",
+          "country": "Namibia",
+          "zipcode": "68696-4206",
+          "address": "Apt. 746 69677 Raynor Dam, Rickeyborough, SD 94312-4148",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c855c06126fc1dcd4d6128bf9320dc446e9c38ef/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 2,
+              "name": "Non-smoker"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "5",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": [
+            {
+              "id": "3",
+              "type": "booking"
+            },
+            {
+              "id": "6",
+              "type": "booking"
+            },
+            {
+              "id": "9",
+              "type": "booking"
+            },
+            {
+              "id": "11",
+              "type": "booking"
+            },
+            {
+              "id": "13",
+              "type": "booking"
+            }
+          ]
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "13",
+      "type": "couch",
+      "attributes": {
+        "id": 13,
+        "user_id": 13,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 13,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "antonia@hahn.example",
+          "first_name": "Noel",
+          "last_name": "Konopelski",
+          "date_of_birth": "1999-10-22",
+          "summary": "Before they sold out gastropub letterpress taxidermy bespok.",
+          "city": "South Danamouth",
+          "country": "El Salvador",
+          "zipcode": "37329",
+          "address": "78063 Mertz Trail, North Kai, CA 55490-9581",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc2NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--b7053154b0d17e5ef0749640e633a7946f54ee62/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "13",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "9",
+      "type": "couch",
+      "attributes": {
+        "id": 9,
+        "user_id": 9,
+        "capacity": null,
+        "active": true,
+        "rating": 0.0,
+        "user": {
+          "id": 9,
+          "created_at": "2024-10-22T08:58:23.000Z",
+          "updated_at": "2024-10-22T08:58:23.000Z",
+          "email": "claretta@fahey.example",
+          "first_name": "Cicely",
+          "last_name": "Zulauf",
+          "date_of_birth": "1999-10-22",
+          "summary": "Viral pabst fashion axe. Mlkshk seitan marfa 90's post-iron.",
+          "city": "South Armando",
+          "country": "Macao",
+          "zipcode": "78900",
+          "address": "87621 Bailey Rest, Boscofort, WY 21665-2235",
+          "offers_couch": true,
+          "offers_hang_out": true,
+          "offers_co_work": true,
+          "travelling": false,
+          "age": 25,
+          "photo": "http://http/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSVBZWFpoZEdGeUxuQnVad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GMllYUmhjaTV3Ym1jaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyRjJZWFJoY2k1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q1hSbGMzUT0iLCJleHAiOiIyMDI0LTEwLTIyVDA5OjAzOjI0Ljc3MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d2a53486336c6ff9fcc692f153c5171e29139263/avatar.png",
+          "characteristics": [
+            {
+              "id": 1,
+              "name": "Queer"
+            },
+            {
+              "id": 3,
+              "name": "Vaccinated"
+            }
+          ]
+        },
+        "facilities": []
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "9",
+            "type": "user"
+          }
+        },
+        "facilities": {
+          "data": []
+        },
+        "bookings": {
+          "data": []
+        },
+        "reviews": {
+          "data": []
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "current": 1,
+      "records": 15
+    }
+  },
+  "links": {
+    "self": "http://www.example.com/api/v1/couches?page[limit]=10\u0026page[offset]=3",
+    "current": "http://www.example.com/api/v1/couches?page[limit]=10\u0026page[number]=1\u0026page[offset]=3"
+  }
+}
